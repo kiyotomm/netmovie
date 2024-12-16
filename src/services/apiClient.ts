@@ -4,7 +4,7 @@ import axios from "axios";
 const apiClient = axios.create({
   baseURL: "https://api.themoviedb.org/3", // Replace with the actual base URL of the API
   params: {
-    api_key: "d1ee23eca14e7dec355c6748058fb72f", // Add your client_id or access key
+    api_key: "f3f01bbb7ea2ac753c31dcf33eee6e0b", // Add your client_id or access key
     include_video: true,
   },
 });
