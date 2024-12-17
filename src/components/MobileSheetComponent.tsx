@@ -6,13 +6,9 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export function MobileSheetComponent() {
   return (
@@ -23,19 +19,15 @@ export function MobileSheetComponent() {
             <Menu style={{ fontSize: "30px", width: "30px", height: "30px" }} />
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="h-screen">
-          <SheetHeader>
-            <SheetTitle>Edit profile</SheetTitle>
-            <SheetDescription>
-              Make changes to your profile here. Click save when you're done.
-            </SheetDescription>
-          </SheetHeader>
-
-          <SheetFooter>
+        <SheetContent side="left" className=" flex h-screen [&>button]:hidden">
+          <SheetClose asChild className="">
+            <X />
+          </SheetClose>
+          {/* <SheetFooter>
             <SheetClose asChild>
               <Button type="submit">Save changes</Button>
             </SheetClose>
-          </SheetFooter>
+          </SheetFooter> */}
         </SheetContent>
       </Sheet>
     </div>
