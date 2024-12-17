@@ -51,13 +51,6 @@ export function CarouselComponent() {
           ))}
         </CarouselContent>
       </Carousel>
-      {popular?.results.slice(0, 5).map((movie, index) => (
-        <UpNextCard
-          key={index}
-          image={movie.poster_path}
-          original_title={movie.original_title}
-        />
-      ))}
     </>
   );
 }
