@@ -1,5 +1,11 @@
+import { Link } from "react-router-dom";
+
 const Title = () => {
-  return <div className="text-4xl">NetMovie</div>;
+  return (
+    <Link to="/" className=" text-2xl md:text-4xl">
+      NetMovie
+    </Link>
+  );
 };
 
 export default Title;

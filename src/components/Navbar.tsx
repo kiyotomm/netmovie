@@ -1,13 +1,21 @@
+import { Languages } from "lucide-react";
 import InputBar from "./InputBar";
-import QuickSearch from "./QuickSearch";
+import { SheetComponent } from "./SheetComponent";
 import Title from "./Title";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
   return (
-    <div className="flex items-center p-5 gap-3 w-screen">
+    <div className="flex items-center justify-center p-5 gap-3 w-screen">
       <Title />
+      <SheetComponent />
       <InputBar />
-      <QuickSearch />
+      <Button variant="ghost">
+        <Languages
+          // size="30px"
+          style={{ fontSize: "30px", width: "30px", height: "30px" }}
+        />
+      </Button>
     </div>
   );
 };
