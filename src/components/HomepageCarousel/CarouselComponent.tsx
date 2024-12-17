@@ -29,14 +29,16 @@ export function CarouselComponent() {
         {popular?.results.slice(0, 5).map((movie, index) => (
           <CarouselItem key={index} className="h-[40vh]">
             <div className=" h-full">
-              {/* <Card className="flex justify-center items-center h-full"> */}
-              <Card className="flex  h-full">
-                <CardContent className="flex p-0  items-center justify-center">
+              <Card className="flex justify-between items-center h-full">
+                {/* <Card className="flex  h-full"> */}
+                <CardContent className="flex  items-center justify-around p-0 ">
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                     alt=""
                     className="w-[17vw] h-full"
                   />
+                </CardContent>
+                <CardContent>
                   <span className="text-4xl font-semibold ">
                     <div>{movie.original_title}</div>
                   </span>
