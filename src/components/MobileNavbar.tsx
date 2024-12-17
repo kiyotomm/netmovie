@@ -1,14 +1,15 @@
 import Title from "./Title";
 import { MobileSheetComponent } from "./MobileSheetComponent";
-import { Languages, Search } from "lucide-react";
+import { Languages } from "lucide-react";
 import { Button } from "./ui/button";
+import { SearchSheetComponent } from "./SearchSheetComponent";
 
 const MobileNavbar = () => {
   return (
     <div className=" flex items-center gap-4 p-5">
       <MobileSheetComponent />
       <Title />
-      <Search />
+      <SearchSheetComponent />
       <Button variant="ghost">
         <Languages
           // size="30px"
