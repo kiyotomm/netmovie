@@ -1,11 +1,10 @@
-import { CarouselComponent } from "../HomepageCarousel/CarouselComponent";
-import { UpNextCard } from "../HomepageCarousel/UpNextCard";
+import HeroSection from "../HeroSection";
 
 const Homepage = () => {
   return (
     <div className="flex justify-center ">
-      <div className="flex mt-10">
-        <CarouselComponent />
+      <div className="flex mt-4">
+        <HeroSection />
       </div>
     </div>
   );

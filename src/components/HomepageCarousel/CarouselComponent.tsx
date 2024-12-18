@@ -10,7 +10,6 @@ import {
   //   CarouselPrevious,
 } from "@/components/ui/carousel";
 import useMovieTrending from "@/hooks/useMovieTrending";
-import { UpNextCard } from "./UpNextCard";
 
 export function CarouselComponent() {
   const { data: popular } = useMovieTrending();
@@ -23,13 +22,13 @@ export function CarouselComponent() {
     <>
       <Carousel
         plugins={[plugin.current]}
-        className="w-[50vw] h-[40vh]"
+        className="w-[70vw] h-[60vh]"
         onMouseEnter={plugin.current.stop}
         onMouseLeave={plugin.current.reset}
       >
         <CarouselContent>
           {popular?.results.slice(0, 5).map((movie, index) => (
-            <CarouselItem key={index} className="h-[40vh]">
+            <CarouselItem key={index} className="h-[60vh]">
               <div className=" h-full">
                 <Card className="flex justify-between items-center h-full">
                   {/* <Card className="flex  h-full"> */}
@@ -37,13 +36,14 @@ export function CarouselComponent() {
                     <img
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                       alt=""
-                      className="w-[17vw] h-full"
+                      className=""
                     />
                   </CardContent>
-                  <CardContent>
+                  <CardContent className="flex flex-col justify-center items-center w-full h-full">
                     <span className="text-4xl font-semibold ">
                       <div>{movie.original_title}</div>
                     </span>
+                    <div>{movie.overview}</div>
                   </CardContent>
                 </Card>
               </div>
