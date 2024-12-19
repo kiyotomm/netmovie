@@ -55,7 +55,7 @@ const StyledWrapper = styled.div`
   }
 
   .radio-input {
-    --container_width: 250px;
+    --container_width: 200px;
     position: relative;
     display: flex;
     align-items: center;

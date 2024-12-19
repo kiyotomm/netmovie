@@ -11,15 +11,15 @@ const TrendingMovie = () => {
   const { data } = useMovieTrending(trendingPeriod);
 
   return (
-    <div className="flex flex-col justify-center gap-5 w-[90vw]">
-      <div className="flex gap-4">
+    <div className="flex flex-col justify-center gap-5 md:w-[90vw] w-[85vw]">
+      <div className="flex gap-4 items-center">
         <div className="md:text-3xl text-xl font-bold">Trending</div>
-        {/* <div>
+        <div>
           <CustomSwitch
             input1={() => setTrendingPeriod("day")}
             input2={() => setTrendingPeriod("week")}
           />
-        </div> */}
+        </div>
       </div>
       <div className=" flex  overflow-x-scroll  ">
         <div className="flex gap-5">
