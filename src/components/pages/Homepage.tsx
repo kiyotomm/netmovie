@@ -1,5 +1,5 @@
-import HeroSection from "../HeroSection";
-import TrendingMovie from "../TrendingMovie";
+import HeroSection from "../pagescontent/homepage/HeroSection";
+import TrendingMovie from "../pagescontent/homepage/TrendingMovie";
 
 const Homepage = () => {
   return (

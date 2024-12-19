@@ -1,6 +1,6 @@
 import useMovieTrending from "@/hooks/useMovieTrending";
-import CustomSwitch from "./CustomSwitch";
-import TrendingMovieCard from "./cards/TrendingMovieCard";
+import CustomSwitch from "../../CustomSwitch";
+import TrendingMovieCard from "../../cards/TrendingMovieCard";
 import { useEffect, useState } from "react";
 
 const TrendingMovie = () => {

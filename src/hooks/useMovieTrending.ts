@@ -24,6 +24,7 @@ const useMovieTrending = (date: string) => {
       );
       return response.data;
     },
+    placeholderData: (previousData) => previousData,
   });
   return { data, isLoading, error };
 };
