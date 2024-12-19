@@ -4,7 +4,7 @@ import { PopularMovie } from "@/hooks/useMoviePopular";
 
 const PopularTrailerCard = ({ data }: { data: PopularMovie }) => {
   return (
-    <div className="flex flex-col items-center gap-5 md:w-[30vw] w-[80vw]  hover:scale-105 transition-transform duration-300">
+    <div className="flex flex-col items-center gap-5 md:w-[30vw] w-[80vw]  md:hover:scale-105 transition-transform duration-300">
       <div className="flex justify-center items-center relative">
         <div className="relative">
           <img

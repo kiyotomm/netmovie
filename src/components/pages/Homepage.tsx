@@ -1,6 +1,7 @@
 import HeroSection from "../pagescontent/homepage/HeroSection";
 import PopularTrailer from "../pagescontent/homepage/PopularTrailer";
 import TrendingMovie from "../pagescontent/homepage/TrendingMovie";
+import UpComingMovie from "../pagescontent/homepage/UpComingMovie";
 
 const Homepage = () => {
   return (
@@ -13,6 +14,9 @@ const Homepage = () => {
       </div>
       <div>
         <PopularTrailer />
+      </div>
+      <div>
+        <UpComingMovie />
       </div>
     </div>
   );
