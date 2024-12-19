@@ -1,12 +1,14 @@
 import apiClient from "@/services/apiClient";
 import { useQuery } from "@tanstack/react-query";
 
-interface Trending {
+export interface Trending {
   id: number;
   poster_path: string;
   original_title: string;
   overview: string;
   backdrop_path: string;
+  media_type: string;
+  release_date: number;
 }
 
 interface fetchedMovieTrending {
