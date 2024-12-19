@@ -7,7 +7,7 @@ const Homepage = () => {
       <div className="flex mt-4">
         <HeroSection />
       </div>
-      <div className="p-10 mt-10">
+      <div className=" md:p-10 p-7  mt-10  ">
         <TrendingMovie />
       </div>
     </div>

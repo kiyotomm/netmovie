@@ -11,7 +11,7 @@ const TrendingMovie = () => {
   const { data } = useMovieTrending(trendingPeriod);
 
   return (
-    <div className="flex flex-col justify-center gap-5 md:w-[90vw] w-[85vw]">
+    <div className="flex flex-col justify-center gap-5 md:max-w-[90vw] max-w-[85vw] overflow-hidden">
       <div className="flex gap-4 items-center">
         <div className="md:text-3xl text-xl font-bold">Trending</div>
         <div>
