@@ -1,12 +1,30 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-const Radio = () => {
+interface Props {
+  input1: () => void;
+  input2: () => void;
+}
+
+const Radio = ({ input1, input2 }: Props) => {
+  const [selectedValue, setSelectedValue] = useState<number>(1);
+
+  const handleInput1 = () => {
+    setSelectedValue(1);
+    input1();
+  };
+  const handleInput2 = () => {
+    setSelectedValue(2);
+    input2();
+  };
+
   return (
     <StyledWrapper>
       <div className="radio-input ">
         <label>
           <input
-            checked
+            onChange={() => handleInput1()}
+            checked={selectedValue === 1}
             type="radio"
             id="value-1"
             name="value-radio"
@@ -16,6 +34,8 @@ const Radio = () => {
         </label>
         <label>
           <input
+            onChange={() => handleInput2()}
+            checked={selectedValue === 2}
             type="radio"
             id="value-2"
             name="value-radio"

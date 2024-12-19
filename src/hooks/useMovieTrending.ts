@@ -15,12 +15,12 @@ interface fetchedMovieTrending {
   results: Trending[];
 }
 
-const useMovieTrending = () => {
+const useMovieTrending = (date: string) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["trending"],
+    queryKey: ["trending", date],
     queryFn: async () => {
       const response = await apiClient<fetchedMovieTrending>(
-        `/trending/movie/day`
+        `/trending/movie/${date}`
       );
       return response.data;
     },

@@ -8,7 +8,7 @@ const Layout = () => {
       <div className="hidden md:block">
         <Navbar />
       </div>
-      <div className="block md:hidden">
+      <div className="block md:hidden ">
         <MobileNavbar />
       </div>
       <Outlet />

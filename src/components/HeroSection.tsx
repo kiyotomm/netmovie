@@ -1,6 +1,6 @@
 const HeroSection = () => {
   return (
-    <div className="w-screen h-[30vh] overflow-hidden">
+    <div className="flex w-screen h-[30vh] overflow-hidden">
       <div>
         <img
           className="w-full absolute h-[30vh] object-cover "
