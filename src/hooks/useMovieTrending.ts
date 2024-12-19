@@ -9,6 +9,7 @@ export interface Trending {
   backdrop_path: string;
   media_type: string;
   release_date: number;
+  vote_average: number;
 }
 
 interface fetchedMovieTrending {

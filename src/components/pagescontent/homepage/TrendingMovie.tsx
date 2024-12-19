@@ -2,6 +2,7 @@ import useMovieTrending from "@/hooks/useMovieTrending";
 import CustomSwitch from "../../CustomSwitch";
 import TrendingMovieCard from "../../cards/TrendingMovieCard";
 import { useEffect, useState } from "react";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const TrendingMovie = () => {
   const [trendingPeriod, setTrendingPeriod] = useState<string>("day");
@@ -21,13 +22,14 @@ const TrendingMovie = () => {
           />
         </div>
       </div>
-      <div className=" flex  overflow-x-scroll  ">
-        <div className="flex gap-5">
+      <ScrollArea className=" flex  overflow-x-scroll  ">
+        <div className="flex gap-5 mb-5">
           {data?.results.map((movie) => (
             <TrendingMovieCard key={movie.id} data={movie} />
           ))}
         </div>
-      </div>
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
     </div>
   );
 };
