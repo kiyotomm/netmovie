@@ -5,7 +5,7 @@ import UpComingMovie from "../pagescontent/homepage/UpComingMovie";
 
 const Homepage = () => {
   return (
-    <div className="flex flex-col justify-center items-center overflow-hidden ">
+    <div className="flex flex-col gap-7 justify-center items-center overflow-hidden ">
       <div className="flex mt-4">
         <HeroSection />
       </div>

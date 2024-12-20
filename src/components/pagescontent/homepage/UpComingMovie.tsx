@@ -6,7 +6,7 @@ const UpComingMovie = () => {
   const { data } = useMovieUpComing();
   return (
     <div className="flex flex-col justify-center gap-5 md:max-w-[90vw] max-w-[85vw] overflow-hidden">
-      <div>Up Coming</div>
+      <div className="md:text-3xl text-xl font-bold">Up Coming</div>
 
       <ScrollArea className=" flex   ">
         <div className="flex gap-5 mb-5">

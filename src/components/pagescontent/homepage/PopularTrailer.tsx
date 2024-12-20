@@ -5,7 +5,7 @@ import useMoviePopular from "@/hooks/useMoviePopular";
 const PopularTrailer = () => {
   const { data } = useMoviePopular();
   return (
-    <div className="flex flex-col gap-5 md:w-[96vw] w-[90vw]">
+    <div className="flex flex-col justify-center  gap-5  md:w-[90vw] w-[90vw]">
       <div className="md:text-4xl text-2xl font-bold">Popular now</div>
       {/* <div>
         <iframe
@@ -19,8 +19,8 @@ const PopularTrailer = () => {
           //   allowfullscreen
         ></iframe>/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg
       </div> */}
-      <ScrollArea className=" flex    ">
-        <div className="flex gap-7 mb-5 p-10">
+      <ScrollArea className="   ">
+        <div className="flex gap-7  mb-5 p-10">
           {data?.results.map((movie) => (
             <div>
               <PopularTrailerCard data={movie} />
