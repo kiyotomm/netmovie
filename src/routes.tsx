@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./components/Layout";
 import Homepage from "./components/pages/Homepage";
+import MoiveDetailsPage from "./components/pages/MoiveDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
         index: true,
         element: <Homepage />,
       },
+      { path: "movie-detail/:id", element: <MoiveDetailsPage /> },
     ],
   },
 ]);
