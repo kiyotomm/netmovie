@@ -5,7 +5,7 @@ interface FetchedMovieDetails {
   original_title: string;
 }
 
-const useMovieDetails = (movieId: number | undefined) => {
+const useMovieDetails = (movieId: string | undefined) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["details", movieId],
     queryFn: async () => {

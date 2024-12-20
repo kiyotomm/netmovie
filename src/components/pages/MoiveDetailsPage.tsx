@@ -4,9 +4,7 @@ import { useParams } from "react-router-dom";
 const MoiveDetailsPage = () => {
   let { id } = useParams();
 
-  const movieId = id ? parseInt(id, 10) : undefined;
-
-  const { data } = useMovieDetails(movieId);
+  const { data } = useMovieDetails(id);
   return (
     <div>
       <div>{data?.original_title}</div>
