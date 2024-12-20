@@ -19,7 +19,7 @@ const PopularTrailer = () => {
           //   allowfullscreen
         ></iframe>/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg
       </div> */}
-      <ScrollArea className=" flex  overflow-x-scroll  ">
+      <ScrollArea className=" flex    ">
         <div className="flex gap-7 mb-5 p-10">
           {data?.results.map((movie) => (
             <div>

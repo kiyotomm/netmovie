@@ -22,7 +22,7 @@ const TrendingMovie = () => {
           />
         </div>
       </div>
-      <ScrollArea className=" flex  overflow-x-scroll  ">
+      <ScrollArea className=" flex    ">
         <div className="flex gap-5 mb-5">
           {data?.results.map((movie) => (
             <TrendingMovieCard key={movie.id} data={movie} />

@@ -8,7 +8,7 @@ const UpComingMovie = () => {
     <div className="flex flex-col justify-center gap-5 md:max-w-[90vw] max-w-[85vw] overflow-hidden">
       <div>Up Coming</div>
 
-      <ScrollArea className=" flex  overflow-x-scroll  ">
+      <ScrollArea className=" flex   ">
         <div className="flex gap-5 mb-5">
           {data?.results.map((movie) => (
             <UpComingCard key={movie.id} data={movie} />
