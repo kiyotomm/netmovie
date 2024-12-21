@@ -2,7 +2,14 @@ import apiClient from "@/services/apiClient";
 import { useQuery } from "@tanstack/react-query";
 
 interface FetchedMovieDetails {
+  backdrop_path: string;
+  budget: string;
+  genres: [{ id: number; name: string }];
+  homepage: string;
+  id: number;
   original_title: string;
+  poster_path: string;
+  release_date: string;
 }
 
 const useMovieDetails = (movieId: string | undefined) => {
