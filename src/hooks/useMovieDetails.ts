@@ -8,8 +8,12 @@ interface FetchedMovieDetails {
   homepage: string;
   id: number;
   original_title: string;
+  overview: string;
   poster_path: string;
   release_date: string;
+  runtime: number;
+  vote_average: number;
+  tagline: string;
 }
 
 const useMovieDetails = (movieId: string | undefined) => {
