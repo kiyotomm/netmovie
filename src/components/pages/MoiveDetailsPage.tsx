@@ -3,6 +3,7 @@ import { IoStar } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 import { Button } from "../ui/button";
 import { FaPlay } from "react-icons/fa";
+import { DialogComponent } from "../DialogComponent";
 
 const MoiveDetailsPage = () => {
   let { id } = useParams();
@@ -43,6 +44,7 @@ const MoiveDetailsPage = () => {
         <img
           className="max-w-[300px] rounded-lg"
           src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
+          alt={data?.original_title}
         />
       </div>
       <div className="flex flex-col gap-3 ">
@@ -61,7 +63,7 @@ const MoiveDetailsPage = () => {
                 {index < data.genres.length - 1 ? ", " : ""}
               </span>
             ))}
-            ・{formatTime(data?.runtime)}
+            ・{formatTime(data?.runtime)}・{data?.status}
           </span>
         </div>
         <div>
@@ -72,11 +74,14 @@ const MoiveDetailsPage = () => {
           </span>
         </div>
         <div>
-          <Button>
-            {" "}
-            <FaPlay size="50px" />
-            play trailer
-          </Button>
+          <DialogComponent
+            open={
+              <Button>
+                <FaPlay size="50px" />
+                play trailer
+              </Button>
+            }
+          />
         </div>
         <div className="opacity-60">{data?.tagline}</div>
         <div className="max-w-[25vw]">

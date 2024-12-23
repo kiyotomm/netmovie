@@ -13,6 +13,7 @@ const router = createBrowserRouter([
         element: <Homepage />,
       },
       { path: "movie-detail/:id", element: <MoiveDetailsPage /> },
+      { path: "/:id", element: <Homepage /> }, //for modals in homepage
     ],
   },
 ]);

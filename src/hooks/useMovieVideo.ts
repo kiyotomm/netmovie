@@ -12,7 +12,7 @@ interface FetchedMovieVideo {
 
 const useMovieVideo = (movieId: any) => {
   const { isLoading, data, error } = useQuery({
-    queryKey: ["video"],
+    queryKey: ["video", movieId],
     queryFn: async () => {
       const response = await apiClient<FetchedMovieVideo>(
         `/movie/${movieId}/videos`

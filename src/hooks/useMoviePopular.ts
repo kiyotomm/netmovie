@@ -2,7 +2,7 @@ import apiClient from "@/services/apiClient";
 import { useQuery } from "@tanstack/react-query";
 
 export interface PopularMovie {
-  id: number;
+  id: string;
   original_title: string;
   poster_path: string;
   backdrop_path: string;
