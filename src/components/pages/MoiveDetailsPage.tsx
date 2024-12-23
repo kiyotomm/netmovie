@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 import { Button } from "../ui/button";
 import { FaPlay } from "react-icons/fa";
 import { DialogComponent } from "../DialogComponent";
+import useMovieCredit from "@/hooks/useMovieCredits";
+import MovieCreditCard from "../MovieCreditCard";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 const MoiveDetailsPage = () => {
   let { id } = useParams();
@@ -38,56 +41,72 @@ const MoiveDetailsPage = () => {
   };
 
   const { data } = useMovieDetails(id);
+  const { data: credit } = useMovieCredit(id);
   return (
-    <div className="flex md:flex-row flex-col justify-center gap-7 p-10 border-2 w-screen">
-      <div className="flex justify-center">
-        <img
-          className="md:max-w-[300px] max-w-[230px] rounded-lg"
-          src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
-          alt={data?.original_title}
-        />
-      </div>
-      <div className="flex flex-col gap-3 ">
-        <div className="flex gap-3 md:text-4xl text-xl">
-          <span className="font-bold">{data?.original_title}</span>
-          <span className="opacity-25 font-extralight">
-            ({formatHeroDate(data?.release_date)})
-          </span>
-        </div>
-        <div className="flex flex-col items-center font-extralight text-lg">
-          <span>{data?.release_date.replace(/-/g, "/")}・</span>
-          <span>
-            {data?.genres.map((genre, index) => (
-              <span key={genre.id}>
-                {genre.name}
-                {index < data.genres.length - 1 ? ", " : ""}
-              </span>
-            ))}
-          </span>
-          ・{formatTime(data?.runtime)}・{data?.status}
-        </div>
-        <div>
-          <span className="flex items-center gap-1 text-5xl font-bold ">
-            {" "}
-            <IoStar color="yellow" size="50px" />
-            {formatRating(data?.vote_average)}
-          </span>
-        </div>
-        <div>
-          <DialogComponent
-            open={
-              <Button>
-                <FaPlay size="50px" />
-                play trailer
-              </Button>
-            }
+    <div className="flex flex-col gap-[10vw]">
+      <div className="flex md:flex-row flex-col justify-center gap-7 p-10 border-2 w-screen">
+        <div className="flex justify-center">
+          <img
+            className="md:max-w-[300px] max-w-[290px] rounded-lg"
+            src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
+            alt={data?.original_title}
           />
         </div>
-        <div className="opacity-60">{data?.tagline}</div>
-        <div className="max-w-[25vw]">
-          <span className="flex flex-col font-bold text-3xl">Overview</span>
-          <div className="font-light">{data?.overview}</div>
+        <div className="flex flex-col gap-3 ">
+          <div className="flex gap-3 md:text-4xl text-xl">
+            <span className="font-bold">{data?.original_title}</span>
+            <span className="opacity-25 font-extralight">
+              ({formatHeroDate(data?.release_date)})
+            </span>
+          </div>
+          <div className="flex md:flex-row flex-col items-center md:items-start font-extralight text-lg">
+            <span>{data?.release_date.replace(/-/g, "/")}・</span>
+            <span>
+              {data?.genres.map((genre, index) => (
+                <span key={genre.id}>
+                  {genre.name}
+                  {index < data.genres.length - 1 ? ", " : ""}
+                </span>
+              ))}
+            </span>
+            ・{formatTime(data?.runtime)}・{data?.status}
+          </div>
+          <div>
+            <span className="flex items-center gap-1 text-5xl font-bold ">
+              {" "}
+              <IoStar color="yellow" size="50px" />
+              {formatRating(data?.vote_average)}
+            </span>
+          </div>
+          <div>
+            <DialogComponent
+              open={
+                <Button>
+                  <FaPlay size="50px" />
+                  play trailer
+                </Button>
+              }
+            />
+          </div>
+          <div className="opacity-60">{data?.tagline}</div>
+          <div className="max-w-[25vw]">
+            <span className="flex flex-col font-bold text-3xl">Overview</span>
+            <div className="md:w-[10vw] w-[70vw] font-light ">
+              {data?.overview}
+            </div>
+          </div>
         </div>
+        {/* {credit?.cast.map((cred) => (
+          <div key={cred.known_for_department}>{cred.known_for_department}</div>
+        ))} */}
+      </div>
+      <div className="flex flex-col items-center justify-center w-[50vw]">
+        <div>Cast</div>
+        <ScrollArea className="flex">
+          {credit?.cast.map((cred) => (
+            <MovieCreditCard data={cred} />
+          ))}
+        </ScrollArea>
       </div>
     </div>
   );
