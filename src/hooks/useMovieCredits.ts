@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 export interface Credit {
   known_for_department: string;
   name: string;
+  profile_path: string;
 }
 
 interface FetchedCredit {

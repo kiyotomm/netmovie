@@ -6,7 +6,7 @@ import { FaPlay } from "react-icons/fa";
 import { DialogComponent } from "../DialogComponent";
 import useMovieCredit from "@/hooks/useMovieCredits";
 import MovieCreditCard from "../MovieCreditCard";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 
 const MoiveDetailsPage = () => {
   let { id } = useParams();
@@ -43,7 +43,7 @@ const MoiveDetailsPage = () => {
   const { data } = useMovieDetails(id);
   const { data: credit } = useMovieCredit(id);
   return (
-    <div className="flex flex-col gap-[10vw]">
+    <div className="flex flex-col gap-[2vw]">
       <div className="flex md:flex-row flex-col justify-center gap-7 p-10 border-2 w-screen">
         <div className="flex justify-center">
           <img
@@ -91,7 +91,7 @@ const MoiveDetailsPage = () => {
           <div className="opacity-60">{data?.tagline}</div>
           <div className="max-w-[25vw]">
             <span className="flex flex-col font-bold text-3xl">Overview</span>
-            <div className="md:w-[10vw] w-[70vw] font-light ">
+            <div className="md:max-w-[40vh]  w-[70vw] font-light ">
               {data?.overview}
             </div>
           </div>
@@ -100,12 +100,15 @@ const MoiveDetailsPage = () => {
           <div key={cred.known_for_department}>{cred.known_for_department}</div>
         ))} */}
       </div>
-      <div className="flex flex-col items-center justify-center w-[50vw]">
-        <div>Cast</div>
-        <ScrollArea className="flex">
-          {credit?.cast.map((cred) => (
-            <MovieCreditCard data={cred} />
-          ))}
+      <div className="flex flex-col   w-[100vw]">
+        <ScrollArea className="flex justify-center self-center flex-row w-[60vw] ">
+          <div>Cast</div>
+          <div className="flex gap-5 mt-5">
+            {credit?.cast.map((cred) => (
+              <MovieCreditCard data={cred} />
+            ))}
+          </div>
+          <ScrollBar orientation="horizontal" />
         </ScrollArea>
       </div>
     </div>
