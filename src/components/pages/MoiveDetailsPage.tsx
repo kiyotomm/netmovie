@@ -38,10 +38,10 @@ const MoiveDetailsPage = () => {
 
   const { data } = useMovieDetails(id);
   return (
-    <div className="flex gap-7">
+    <div className="flex justify-center gap-7 p-10 border-2 w-screen">
       <div>
         <img
-          className="max-w-[12vw]"
+          className="max-w-[12vw] rounded-lg"
           src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
         />
       </div>
