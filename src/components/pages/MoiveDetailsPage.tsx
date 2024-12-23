@@ -17,19 +17,27 @@ const MoiveDetailsPage = () => {
     <div className="flex gap-7">
       <div>
         <img
-          className="w-[20vw]"
+          className="max-w-[20vw]"
           src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
         />
       </div>
-      <div className="flex flex-col gap-3 text-4xl">
-        <div className="flex gap-3">
+      <div className="flex flex-col gap-3 ">
+        <div className="flex gap-3 md:text-4xl text-2xl">
           <span className="font-bold">{data?.original_title}</span>
           <span className="opacity-25 font-extralight">
             ({formatHeroDate(data?.release_date)})
           </span>
         </div>
         <div>
-          <span className="font-extralight">{data?.release_date}</span>
+          <span className="flex font-extralight text-lg">
+            {data?.release_date.replace(/-/g, "/")}・
+            {data?.genres.map((genre, index) => (
+              <span key={genre.id}>
+                {genre.name}
+                {index < data.genres.length - 1 ? ", " : ""}
+              </span>
+            ))}
+          </span>
         </div>
       </div>
     </div>
