@@ -41,7 +41,7 @@ const MoiveDetailsPage = () => {
     <div className="flex justify-center gap-7 p-10 border-2 w-screen">
       <div>
         <img
-          className="max-w-[12vw] rounded-lg"
+          className="max-w-[20vw] rounded-lg"
           src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
         />
       </div>
