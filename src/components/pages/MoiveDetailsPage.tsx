@@ -39,32 +39,32 @@ const MoiveDetailsPage = () => {
 
   const { data } = useMovieDetails(id);
   return (
-    <div className="flex justify-center gap-7 p-10 border-2 w-screen">
-      <div>
+    <div className="flex md:flex-row flex-col justify-center gap-7 p-10 border-2 w-screen">
+      <div className="flex justify-center">
         <img
-          className="max-w-[300px] rounded-lg"
+          className="md:max-w-[300px] max-w-[230px] rounded-lg"
           src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
           alt={data?.original_title}
         />
       </div>
       <div className="flex flex-col gap-3 ">
-        <div className="flex gap-3 md:text-4xl text-2xl">
+        <div className="flex gap-3 md:text-4xl text-xl">
           <span className="font-bold">{data?.original_title}</span>
           <span className="opacity-25 font-extralight">
             ({formatHeroDate(data?.release_date)})
           </span>
         </div>
-        <div>
-          <span className="flex font-extralight text-lg">
-            {data?.release_date.replace(/-/g, "/")}・
+        <div className="flex flex-col items-center font-extralight text-lg">
+          <span>{data?.release_date.replace(/-/g, "/")}・</span>
+          <span>
             {data?.genres.map((genre, index) => (
               <span key={genre.id}>
                 {genre.name}
                 {index < data.genres.length - 1 ? ", " : ""}
               </span>
             ))}
-            ・{formatTime(data?.runtime)}・{data?.status}
           </span>
+          ・{formatTime(data?.runtime)}・{data?.status}
         </div>
         <div>
           <span className="flex items-center gap-1 text-5xl font-bold ">
