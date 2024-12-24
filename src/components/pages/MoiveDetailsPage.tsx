@@ -7,6 +7,7 @@ import { DialogComponent } from "../DialogComponent";
 import useMovieCredit from "@/hooks/useMovieCredits";
 import MovieCreditCard from "../MovieCreditCard";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
+import { MoveRight } from "lucide-react";
 
 const MoiveDetailsPage = () => {
   let { id } = useParams();
@@ -100,16 +101,25 @@ const MoiveDetailsPage = () => {
           <div key={cred.known_for_department}>{cred.known_for_department}</div>
         ))} */}
       </div>
-      <div className="flex flex-col  ">
-        <ScrollArea className="flex justify-center self-center flex-row w-[30vw] ">
+      <div className="flex justify-center gap-3">
+        <div className="flex flex-col justify-center self-center  ">
           <div className="text-4xl">Cast</div>
-          <div className="flex gap-7 mt-5 p-5">
-            {credit?.cast.map((cred) => (
-              <MovieCreditCard data={cred} />
-            ))}
-          </div>
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
+          <ScrollArea className="flex justify-center self-center flex-row w-[30vw] ">
+            <div className="flex gap-7 mt-5 p-5">
+              {credit?.cast.slice(0, 8).map((cred) => (
+                <MovieCreditCard data={cred} />
+              ))}
+              <span className=" flex self-center items-center justify-center gap-2 font-bold w-[5vw]">
+                view more <MoveRight />
+              </span>
+            </div>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
+        </div>
+        <div className="flex fex-col gap-4">
+          <span className="font-bold">Status </span>
+          <span>{data?.status}</span>
+        </div>
       </div>
     </div>
   );

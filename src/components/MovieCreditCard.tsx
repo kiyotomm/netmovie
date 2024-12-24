@@ -2,7 +2,7 @@ import { Credit } from "@/hooks/useMovieCredits";
 
 const MovieCreditCard = ({ data }: { data: Credit }) => {
   return (
-    <div className="flex flex-col w-[150px] overflow-hidden border-2  ">
+    <div className="flex flex-col w-[150px] gap-2 overflow-hidden border-2 pb-7 ">
       <img
         className=""
         src={`https://image.tmdb.org/t/p/w500/${data.profile_path}
