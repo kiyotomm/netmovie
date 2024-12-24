@@ -8,9 +8,15 @@ import useMovieCredit from "@/hooks/useMovieCredits";
 import MovieCreditCard from "../MovieCreditCard";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { MoveRight } from "lucide-react";
+import Recommended from "../Recommended";
+import useMovieReommended from "@/hooks/useMovieRecommended";
 
 const MoiveDetailsPage = () => {
   let { id } = useParams();
+
+  const { data: movieDetails } = useMovieDetails(id);
+  const { data: credit } = useMovieCredit(id);
+  const { data: recommended } = useMovieReommended(id);
 
   const formatHeroDate = (dateString?: string) => {
     if (!dateString) {
@@ -58,42 +64,40 @@ const MoiveDetailsPage = () => {
     return displayNames.of(locale!);
   };
 
-  const { data } = useMovieDetails(id);
-  const { data: credit } = useMovieCredit(id);
   return (
     <div className="flex flex-col gap-[2vw]">
       <div className="flex md:flex-row flex-col justify-center gap-7 p-10 border-y-2 w-screen">
         <div className="flex justify-center">
           <img
             className="md:max-w-[300px] max-w-[290px] rounded-lg"
-            src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
-            alt={data?.original_title}
+            src={`https://image.tmdb.org/t/p/w500/${movieDetails?.poster_path}`}
+            alt={movieDetails?.original_title}
           />
         </div>
         <div className="flex flex-col gap-3 ">
           <div className="flex gap-3 md:text-4xl text-xl">
-            <span className="font-bold">{data?.original_title}</span>
+            <span className="font-bold">{movieDetails?.original_title}</span>
             <span className="opacity-25 font-extralight">
-              ({formatHeroDate(data?.release_date)})
+              ({formatHeroDate(movieDetails?.release_date)})
             </span>
           </div>
           <div className="flex md:flex-row flex-col items-center md:items-start font-extralight text-lg">
-            <span>{data?.release_date.replace(/-/g, "/")}・</span>
+            <span>{movieDetails?.release_date.replace(/-/g, "/")}・</span>
             <span>
-              {data?.genres.map((genre, index) => (
+              {movieDetails?.genres.map((genre, index) => (
                 <span key={genre.id}>
                   {genre.name}
-                  {index < data.genres.length - 1 ? ", " : ""}
+                  {index < movieDetails.genres.length - 1 ? ", " : ""}
                 </span>
               ))}
             </span>
-            ・{formatTime(data?.runtime)}・{data?.status}
+            ・{formatTime(movieDetails?.runtime)}・{movieDetails?.status}
           </div>
           <div>
             <span className="flex items-center gap-1 text-5xl font-bold ">
               {" "}
               <IoStar color="yellow" size="50px" />
-              {formatRating(data?.vote_average)}
+              {formatRating(movieDetails?.vote_average)}
             </span>
           </div>
           <div>
@@ -106,28 +110,28 @@ const MoiveDetailsPage = () => {
               }
             />
           </div>
-          <div className="opacity-60">{data?.tagline}</div>
+          <div className="opacity-60">{movieDetails?.tagline}</div>
           <div className="max-w-[25vw]">
             <span className="flex flex-col font-bold text-3xl">Overview</span>
             <div className="md:max-w-[40vh]  w-[70vw] font-light ">
-              {data?.overview}
+              {movieDetails?.overview}
             </div>
           </div>
         </div>
       </div>
 
       {/* cast and other aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
-      <div className="flex justify-center gap-9">
+      <div className="flex md:flex-row flex-col justify-center gap-9">
         <div className="flex flex-col justify-center self-center  ">
           <div className="text-4xl">Cast</div>
-          <ScrollArea className="flex justify-center self-center flex-row w-[30vw] ">
-            <div className="flex gap-7 mt-5 p-5">
-              {credit?.cast.slice(0, 8).map((cred) => (
-                <MovieCreditCard data={cred} />
+          <ScrollArea className="flex justify-center self-center flex-row md:w-[40vw] w-[90vw] ">
+            <div className="flex md:gap-7 gap-10 mt-5 p-5">
+              {credit?.cast.slice(0, 8).map((cred, ind) => (
+                <MovieCreditCard key={ind} data={cred} />
               ))}
               <Button
                 variant="ghost"
-                className=" flex self-center items-center justify-center gap-2 font-bold w-[5vw] "
+                className=" flex self-center items-center justify-center gap-2 font-bold w-[5vw]  "
               >
                 view more <MoveRight />
               </Button>
@@ -135,24 +139,36 @@ const MoiveDetailsPage = () => {
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
         </div>
-        <div className="flex flex-col gap-8 self-center min-w-[10vw] ">
+        <div className="flex flex-col gap-8 self-center md:min-w-[20vw] min-w-[90vw] ">
           <div className="flex flex-col border-b-2">
             <span className="font-bold">Status </span>
-            <span>{data?.status}</span>
+            <span>{movieDetails?.status}</span>
           </div>
           <div className="flex flex-col border-b-2 ">
             <span className="font-bold">Original Language </span>
-            <span>{formatLanguage(data?.original_language)}</span>
+            <span>{formatLanguage(movieDetails?.original_language)}</span>
           </div>
           <div className="flex flex-col border-b-2">
             <span className="font-bold">Budget </span>
-            <span>{formatZeroToNone(data?.budget)}</span>
+            <span>{formatZeroToNone(movieDetails?.budget)}</span>
           </div>
           <div className="flex flex-col border-b-2">
             <span className="font-bold">Revenue </span>
-            <span>{formatZeroToNone(data?.revenue)}</span>
+            <span>{formatZeroToNone(movieDetails?.revenue)}</span>
           </div>
         </div>
+      </div>
+      <div className=" self-center md:w-[65vw] w-[90vw] ">
+        <ScrollArea className="   ">
+          <div className="flex gap-7  mb-5 p-10">
+            {recommended?.results.map((movie) => (
+              <div>
+                <Recommended data={movie} />
+              </div>
+            ))}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
       </div>
     </div>
   );

@@ -5,11 +5,11 @@ import { RecommendedMovie } from "@/hooks/useMovieRecommended";
 
 const Recommended = ({ data }: { data: RecommendedMovie }) => {
   return (
-    <div className="flex flex-col items-center gap-5 md:w-[30vw] w-[80vw] lg:w-[20vw]  md:hover:scale-105 transition-transform duration-300">
+    <div className="flex flex-col items-center gap-5 md:w-[350px] w-[80vw]   md:hover:scale-105 transition-transform duration-300">
       <DialogComponent
         open={
           <Link
-            to={"movie-detail" + data.id}
+            to={"/" + data.id}
             className="flex justify-center items-center relative"
           >
             {/* <Link to={"/movie-detail/" + data.id}> */}
@@ -27,7 +27,7 @@ const Recommended = ({ data }: { data: RecommendedMovie }) => {
         }
       />
       <Link to={"/movie-detail/" + data.id}>
-        <div className="font-semibold">{data?.original_title}</div>
+        <div className="font-semibold">{data.original_title}</div>
       </Link>
     </div>
   );
