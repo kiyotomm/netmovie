@@ -3,13 +3,13 @@ import { DialogComponent } from "./DialogComponent";
 import { FaPlay } from "react-icons/fa";
 import { RecommendedMovie } from "@/hooks/useMovieRecommended";
 
-const Recommended = ({ data }: { data: RecommendedMovie }) => {
+const RecommendedCard = ({ data }: { data: RecommendedMovie }) => {
   return (
     <div className="flex flex-col items-center gap-5 md:w-[350px] w-[80vw]   md:hover:scale-105 transition-transform duration-300">
       <DialogComponent
         open={
           <Link
-            to={"/" + data.id}
+            to={"movie-detail" + data.id}
             className="flex justify-center items-center relative"
           >
             {/* <Link to={"/movie-detail/" + data.id}> */}
@@ -33,4 +33,4 @@ const Recommended = ({ data }: { data: RecommendedMovie }) => {
   );
 };
 
-export default Recommended;
+export default RecommendedCard;

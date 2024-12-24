@@ -8,7 +8,7 @@ import useMovieCredit from "@/hooks/useMovieCredits";
 import MovieCreditCard from "../MovieCreditCard";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { MoveRight } from "lucide-react";
-import Recommended from "../Recommended";
+import RecommendedCard from "../RecommendedCard";
 import useMovieReommended from "@/hooks/useMovieRecommended";
 
 const MoiveDetailsPage = () => {
@@ -166,7 +166,7 @@ const MoiveDetailsPage = () => {
           <div className="flex gap-7  mb-5 p-10">
             {recommended?.results.map((movie) => (
               <div>
-                <Recommended data={movie} />
+                <RecommendedCard data={movie} />
               </div>
             ))}
           </div>
