@@ -100,10 +100,10 @@ const MoiveDetailsPage = () => {
           <div key={cred.known_for_department}>{cred.known_for_department}</div>
         ))} */}
       </div>
-      <div className="flex flex-col   w-[100vw]">
-        <ScrollArea className="flex justify-center self-center flex-row w-[60vw] ">
-          <div>Cast</div>
-          <div className="flex gap-5 mt-5">
+      <div className="flex flex-col  ">
+        <ScrollArea className="flex justify-center self-center flex-row w-[30vw] ">
+          <div className="text-4xl">Cast</div>
+          <div className="flex gap-7 mt-5 p-5">
             {credit?.cast.map((cred) => (
               <MovieCreditCard data={cred} />
             ))}
