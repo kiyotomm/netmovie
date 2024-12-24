@@ -14,6 +14,7 @@ const router = createBrowserRouter([
       },
       { path: "movie-detail/:id", element: <MoiveDetailsPage /> },
       { path: "/:id", element: <Homepage /> }, //for modals in homepage
+      { path: "movie-detail/:id", element: <MoiveDetailsPage /> }, //for modals in homepage
     ],
   },
 ]);

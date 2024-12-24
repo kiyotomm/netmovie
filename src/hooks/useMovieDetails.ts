@@ -15,6 +15,8 @@ interface FetchedMovieDetails {
   status: string;
   tagline: string;
   vote_average: number;
+  original_language: string;
+  revenue: string;
 }
 
 const useMovieDetails = (movieId: string | undefined) => {

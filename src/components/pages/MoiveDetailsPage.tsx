@@ -8,6 +8,8 @@ import useMovieCredit from "@/hooks/useMovieCredits";
 import MovieCreditCard from "../MovieCreditCard";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { MoveRight } from "lucide-react";
+import Recommended from "../Recommended";
+import useMovieRecommended from "@/hooks/useMovieRecommended";
 
 const MoiveDetailsPage = () => {
   let { id } = useParams();
@@ -41,11 +43,29 @@ const MoiveDetailsPage = () => {
     }
   };
 
+  const formatZeroToNone = (item?: string) => {
+    if (!item) {
+      return "-";
+    }
+
+    return `$${item.toLocaleString()}`;
+  };
+
+  const formatLanguage = (locale?: string) => {
+    if (!locale) {
+      return "teka";
+    }
+    const displayNames = new Intl.DisplayNames(locale, { type: "language" });
+
+    return displayNames.of(locale!);
+  };
+
   const { data } = useMovieDetails(id);
   const { data: credit } = useMovieCredit(id);
+  const { data: recommended } = useMovieRecommended(id);
   return (
     <div className="flex flex-col gap-[2vw]">
-      <div className="flex md:flex-row flex-col justify-center gap-7 p-10 border-2 w-screen">
+      <div className="flex md:flex-row flex-col justify-center gap-7 p-10 border-y-2 w-screen">
         <div className="flex justify-center">
           <img
             className="md:max-w-[300px] max-w-[290px] rounded-lg"
@@ -97,11 +117,10 @@ const MoiveDetailsPage = () => {
             </div>
           </div>
         </div>
-        {/* {credit?.cast.map((cred) => (
-          <div key={cred.known_for_department}>{cred.known_for_department}</div>
-        ))} */}
       </div>
-      <div className="flex justify-center gap-3">
+
+      {/* cast and other aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+      <div className="flex justify-center gap-9">
         <div className="flex flex-col justify-center self-center  ">
           <div className="text-4xl">Cast</div>
           <ScrollArea className="flex justify-center self-center flex-row w-[30vw] ">
@@ -109,18 +128,41 @@ const MoiveDetailsPage = () => {
               {credit?.cast.slice(0, 8).map((cred) => (
                 <MovieCreditCard data={cred} />
               ))}
-              <span className=" flex self-center items-center justify-center gap-2 font-bold w-[5vw]">
+              <Button
+                variant="ghost"
+                className=" flex self-center items-center justify-center gap-2 font-bold w-[5vw] "
+              >
                 view more <MoveRight />
-              </span>
+              </Button>
             </div>
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
         </div>
-        <div className="flex fex-col gap-4">
-          <span className="font-bold">Status </span>
-          <span>{data?.status}</span>
+        <div className="flex flex-col gap-8 self-center min-w-[10vw] ">
+          <div className="flex flex-col border-b-2">
+            <span className="font-bold">Status </span>
+            <span>{data?.status}</span>
+          </div>
+          <div className="flex flex-col border-b-2 ">
+            <span className="font-bold">Original Language </span>
+            <span>{formatLanguage(data?.original_language)}</span>
+          </div>
+          <div className="flex flex-col border-b-2">
+            <span className="font-bold">Budget </span>
+            <span>{formatZeroToNone(data?.budget)}</span>
+          </div>
+          <div className="flex flex-col border-b-2">
+            <span className="font-bold">Revenue </span>
+            <span>{formatZeroToNone(data?.revenue)}</span>
+          </div>
         </div>
       </div>
+      <ScrollArea className="flex w-[50vw]">
+        {recommended?.results.map((reco) => (
+          <Recommended data={reco} />
+        ))}
+        <ScrollBar orientation="vertical" />
+      </ScrollArea>
     </div>
   );
 };
