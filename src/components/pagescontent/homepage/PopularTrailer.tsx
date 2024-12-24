@@ -22,7 +22,7 @@ const PopularTrailer = () => {
       <ScrollArea className="   ">
         <div className="flex gap-7  mb-5 p-10">
           {data?.results.map((movie) => (
-            <div>
+            <div key={movie.id}>
               <PopularTrailerCard data={movie} />
             </div>
           ))}
