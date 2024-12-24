@@ -158,7 +158,10 @@ const MoiveDetailsPage = () => {
           </div>
         </div>
       </div>
-      <div className=" self-center md:w-[65vw] w-[90vw] ">
+      <div className="flex flex-col self-center md:w-[65vw] w-[90vw] ">
+        <span className="font-bold md:text-3xl text-xl">
+          Recommended movies
+        </span>
         <ScrollArea className="   ">
           <div className="flex gap-7  mb-5 p-10">
             {recommended?.results.map((movie) => (
