@@ -8,8 +8,6 @@ import useMovieCredit from "@/hooks/useMovieCredits";
 import MovieCreditCard from "../MovieCreditCard";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { MoveRight } from "lucide-react";
-import Recommended from "../Recommended";
-import useMovieRecommended from "@/hooks/useMovieRecommended";
 
 const MoiveDetailsPage = () => {
   let { id } = useParams();
@@ -62,7 +60,6 @@ const MoiveDetailsPage = () => {
 
   const { data } = useMovieDetails(id);
   const { data: credit } = useMovieCredit(id);
-  const { data: recommended } = useMovieRecommended(id);
   return (
     <div className="flex flex-col gap-[2vw]">
       <div className="flex md:flex-row flex-col justify-center gap-7 p-10 border-y-2 w-screen">
@@ -157,12 +154,6 @@ const MoiveDetailsPage = () => {
           </div>
         </div>
       </div>
-      <ScrollArea className="flex w-[50vw]">
-        {recommended?.results.map((reco) => (
-          <Recommended data={reco} />
-        ))}
-        <ScrollBar orientation="vertical" />
-      </ScrollArea>
     </div>
   );
 };
