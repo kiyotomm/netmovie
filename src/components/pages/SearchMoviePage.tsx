@@ -1,5 +1,6 @@
 import { useSearchContext } from "@/context/SearchContext";
 import useMovieSearch from "@/hooks/useMovieSearch";
+import SearchMovieCard from "../cards/SearchMovieCard";
 
 const SearchPage = () => {
   const { searchQuery } = useSearchContext();
@@ -7,12 +8,9 @@ const SearchPage = () => {
 
   return (
     <div className="flex">
-      <div className="flex flex-col w-[80vw]">
+      <div className="flex flex-wrap w-[80vw]">
         {data?.results.map((movie) => (
-          <div className="flex gap-10">
-            <span>{movie.original_title}</span>
-            <span>{movie.overview}</span>
-          </div>
+          <SearchMovieCard data={movie} />
         ))}
       </div>
     </div>

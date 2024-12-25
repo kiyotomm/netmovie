@@ -6,8 +6,8 @@ export interface MovieSearch {
   original_title: string;
   overview: string;
   poster_path: string;
-  release_date: string;
-  vote_average: string;
+  release_date: number;
+  vote_average: number;
 }
 
 interface FetchedMovieSearch {
