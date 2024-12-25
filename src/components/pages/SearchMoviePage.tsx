@@ -6,10 +6,13 @@ const SearchPage = () => {
   const { data } = useMovieSearch(searchQuery);
 
   return (
-    <div>
-      <div>
+    <div className="flex">
+      <div className="flex flex-col w-[80vw]">
         {data?.results.map((movie) => (
-          <div>{movie.original_title}</div>
+          <div className="flex gap-10">
+            <span>{movie.original_title}</span>
+            <span>{movie.overview}</span>
+          </div>
         ))}
       </div>
     </div>

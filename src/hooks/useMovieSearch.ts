@@ -1,9 +1,13 @@
 import apiClient from "@/services/apiClient";
 import { useQuery } from "@tanstack/react-query";
 
-interface MovieSearch {
+export interface MovieSearch {
   id: string;
   original_title: string;
+  overview: string;
+  poster_path: string;
+  release_date: string;
+  vote_average: string;
 }
 
 interface FetchedMovieSearch {
