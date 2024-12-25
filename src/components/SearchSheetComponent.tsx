@@ -9,7 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Search, X } from "lucide-react";
-import { Input } from "./ui/input";
+import InputBar from "./InputBar";
 
 export function SearchSheetComponent() {
   return (
@@ -24,7 +24,7 @@ export function SearchSheetComponent() {
           side="top"
           className="flex items-center h-[10vh] [&>button]:hidden"
         >
-          <Input type="text" placeholder="Search for movie" />
+          <InputBar />
           <SheetClose asChild>
             <X />
           </SheetClose>
