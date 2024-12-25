@@ -1,11 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import { Input } from "./ui/input";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useSearchContext } from "@/context/SearchContext";
 
 type Inputs = {
   searchMovie: string;
 };
 
 const InputBar = () => {
+  const { setSearchQuery } = useSearchContext();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -13,7 +17,11 @@ const InputBar = () => {
     // formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+    setSearchQuery(data.searchMovie);
+    navigate("/search/" + data.searchMovie);
+  };
   console.log(watch("searchMovie"));
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

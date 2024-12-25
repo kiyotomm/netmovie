@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import HeroSection from "../pagescontent/homepage/HeroSection";
 import PopularTrailer from "../pagescontent/homepage/PopularTrailer";
 import TrendingMovie from "../pagescontent/homepage/TrendingMovie";
@@ -17,6 +18,7 @@ const Homepage = () => {
       </div>
       <div>
         <UpComingMovie />
+        <Link to="search">dog</Link>
       </div>
     </div>
   );

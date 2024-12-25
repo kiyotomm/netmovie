@@ -10,7 +10,7 @@ interface FetchedMovieSearch {
   results: MovieSearch[];
 }
 
-const useMovieSearch = (movieQuery?: string | undefined) => {
+const useMovieSearch = (movieQuery: string | undefined) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["searchedMovie", movieQuery],
     queryFn: async () => {

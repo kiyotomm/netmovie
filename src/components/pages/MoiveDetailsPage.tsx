@@ -91,7 +91,7 @@ const MoiveDetailsPage = () => {
                 </span>
               ))}
             </span>
-            ・{formatTime(movieDetails?.runtime)}・{movieDetails?.status}
+            ・{formatTime(movieDetails?.runtime)}
           </div>
           <div>
             <span className="flex items-center gap-1 text-5xl font-bold ">
