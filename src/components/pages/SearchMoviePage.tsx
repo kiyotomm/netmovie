@@ -8,7 +8,7 @@ const SearchPage = () => {
 
   return (
     <div className="flex">
-      <div className="flex flex-wrap w-[80vw]">
+      <div className="flex justify-center gap-6 flex-wrap max-w-[840px]">
         {data?.results.map((movie) => (
           <SearchMovieCard data={movie} />
         ))}
