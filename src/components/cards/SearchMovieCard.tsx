@@ -24,10 +24,17 @@ const SearchMovieCard = ({ data }: { data: MovieSearch }) => {
     <div className=" flex flex-col gap-5 md:w-[10vw] w-[40vw]">
       <div>
         <Link to={"/movie-detail/" + data.id}>
-          <img
-            className="w-full"
-            src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
-          />
+          {data.poster_path !== null ? (
+            <img
+              className=""
+              src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
+              alt={data.original_title}
+            />
+          ) : (
+            <div className="self-center justify-self-center mt-[15vh]">
+              image not available
+            </div>
+          )}
         </Link>
         <div className="flex items-center gap-2 mt-2">
           <IoStar color="yellow" />

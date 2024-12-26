@@ -14,6 +14,7 @@ const InputBar = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     // formState: { errors },
   } = useForm<Inputs>();
 
@@ -21,6 +22,7 @@ const InputBar = () => {
     console.log(data);
     setSearchQuery(data.searchMovie);
     navigate("/search/" + data.searchMovie);
+    reset();
   };
   console.log(watch("searchMovie"));
   return (
