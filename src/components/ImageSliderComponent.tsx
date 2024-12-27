@@ -4,13 +4,31 @@ import { ImagesSlider } from "../components/aceternityUI/images-slider";
 import useMovieTrending from "@/hooks/useMovieTrending";
 
 export function ImagesSliderComponent() {
-  const { data } = useMovieTrending("day");
+  const { data, isLoading } = useMovieTrending("day");
   const images =
     data?.results
-      ?.filter((movie) => movie.backdrop_path) // Ensure valid backdrop_path
+      ?.filter((movie) => movie.backdrop_path)
       .map(
         (movie) => `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
-      ) || []; // Default to an empty array
+      ) || [];
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-[40rem]">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (images.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-[40rem]">
+        <p>No images available.</p>
+      </div>
+    );
+  }
+  // const images = data!.results.forEach(
+  //   (img) => `https://image.tmdb.org/t/p/w500${img.backdrop_path}`
+  // );
 
   return (
     <ImagesSlider className="h-[40rem]" images={images}>
