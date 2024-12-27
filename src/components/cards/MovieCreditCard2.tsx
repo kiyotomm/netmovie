@@ -2,10 +2,10 @@ import { Credit } from "@/hooks/useMovieCredits";
 
 const MovieCreditCard2 = ({ data }: { data: Credit }) => {
   return (
-    <div className="flex gap-5 w-[20vw] rounded-lg mb-6">
+    <div className="flex gap-5 md:w-[20vw] w-[87vw] rounded-lg mb-6 ">
       {data.profile_path !== null ? (
         <img
-          className="w-[2vw] h-[5vh] rounded-xl object-cover"
+          className="w-[65px] h-[60px]  rounded-xl object-cover"
           src={`https://image.tmdb.org/t/p/w500/${data.profile_path}`}
         />
       ) : (

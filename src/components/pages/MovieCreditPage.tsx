@@ -16,9 +16,9 @@ const MovieCreditPage = () => {
   const { data: movie } = useMovieDetails(id);
   return (
     <div className="flex flex-col items-center justify-center gap-10">
-      <div className=" flex gap-4 text-4xl items-center ">
+      <div className=" flex gap-4 md:text-4xl text-xl items-center  justify-center border-b-2 w-screen p-5">
         <img
-          className="w-[5vw] rounded-lg"
+          className="md:w-[130px] w-[50px] rounded-lg"
           src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
         />
         <div className="flex flex-col">
@@ -26,7 +26,7 @@ const MovieCreditPage = () => {
           {formatDate(movie?.release_date)})
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
         {data?.cast.map((people) => (
           <MovieCreditCard2 data={people} />
         ))}
