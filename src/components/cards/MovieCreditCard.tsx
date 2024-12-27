@@ -1,8 +1,12 @@
 import { Credit } from "@/hooks/useMovieCredits";
+import { Link } from "react-router-dom";
 
 const MovieCreditCard = ({ data }: { data: Credit }) => {
   return (
-    <div className="flex flex-col w-[150px] gap-2 overflow-hidden border-2 pb-3 ">
+    <Link
+      to={"/movie/credit/" + data.id}
+      className="flex flex-col w-[150px] gap-2 overflow-hidden border-2 pb-3 "
+    >
       {data.profile_path !== null ? (
         <img
           className=""
@@ -18,7 +22,7 @@ const MovieCreditCard = ({ data }: { data: Credit }) => {
         {data.name}
         <span className="font-light px-3">( {data.character} )</span>
       </div>
-    </div>
+    </Link>
   );
 };
 

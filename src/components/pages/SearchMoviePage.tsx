@@ -13,7 +13,10 @@ const SearchPage = () => {
   const { data } = useMovieSearch(searchQuery);
 
   return (
-    <div className="flex">
+    <div className="flex flex-col gap-10 mt-[10vh]">
+      <span className="text-3xl">
+        Results for "<span className="font-bold">{searchQuery}</span>"
+      </span>
       {/* <div className="flex justify-center gap-6 flex-wrap max-w-[840px]"> */}
       {data?.total_results !== 0 ? (
         <div className="grid  md:grid-cols-5 grid-cols-2 gap-6 ">

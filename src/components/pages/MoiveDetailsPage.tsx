@@ -1,11 +1,11 @@
 import useMovieDetails from "@/hooks/useMovieDetails";
 import { IoStar } from "react-icons/io5";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button } from "../ui/button";
 import { FaPlay } from "react-icons/fa";
 import { DialogComponent } from "../DialogComponent";
 import useMovieCredit from "@/hooks/useMovieCredits";
-import MovieCreditCard from "../MovieCreditCard";
+import MovieCreditCard from "../cards/MovieCreditCard";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { MoveRight } from "lucide-react";
 import RecommendedCard from "../RecommendedCard";
@@ -129,12 +129,13 @@ const MoiveDetailsPage = () => {
               {credit?.cast.slice(0, 8).map((cred, ind) => (
                 <MovieCreditCard key={ind} data={cred} />
               ))}
-              <Button
-                variant="ghost"
-                className=" flex self-center items-center justify-center gap-2 font-bold w-[5vw]  "
+              <Link
+                to={"/movie/credit/" + movieDetails?.id}
+                // variant="ghost"
+                className=" flex self-center items-center justify-center gap-2 font-bold w-[5vw]"
               >
                 view more <MoveRight />
-              </Button>
+              </Link>
             </div>
             <ScrollBar orientation="horizontal" />
           </ScrollArea>

@@ -20,6 +20,9 @@ const InputBar = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    if (data.searchMovie === "") {
+      return "bawal yan boss";
+    }
     console.log(data);
     setSearchQuery(data.searchMovie);
     // navigate("/search/" + data.searchMovie);

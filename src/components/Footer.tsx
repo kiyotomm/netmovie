@@ -5,7 +5,7 @@ const Footer = () => {
     // <div className="flex justify-center items-center  border-t-2 w-screen h-[20vh]">
     //   © 2024 netmovie. All rights reserved.
     // </div>
-    <footer className="flex flex-col gap-10 justify-center items-center  border-t-2 w-screen h-[20vh]">
+    <footer className="flex flex-col gap-10 justify-center items-center  border-t-2 w-screen h-[20vh] p-10">
       <div>
         <p>
           Powered by{" "}
