@@ -12,6 +12,7 @@ export interface MovieSearch {
 
 interface FetchedMovieSearch {
   results: MovieSearch[];
+  total_results: number;
 }
 
 const useMovieSearch = (movieQuery: string | undefined) => {

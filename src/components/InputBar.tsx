@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "./ui/input";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useSearchContext } from "@/context/SearchContext";
+import { Search } from "lucide-react";
 
 type Inputs = {
   searchMovie: string;
@@ -28,12 +29,20 @@ const InputBar = () => {
   console.log(watch("searchMovie"));
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        {...register("searchMovie")}
-        type="text"
-        placeholder="Search for a movie"
-        className="w-[70vw]"
-      />
+      <div className="relative flex items-center w-[50vw]">
+        <Input
+          {...register("searchMovie")}
+          type="text"
+          placeholder="Search for a movie"
+          className="pr-10"
+        />
+        <button
+          type="submit"
+          className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+        >
+          <Search size={20} />
+        </button>
+      </div>
     </form>
   );
 };

@@ -15,11 +15,17 @@ const SearchPage = () => {
   return (
     <div className="flex">
       {/* <div className="flex justify-center gap-6 flex-wrap max-w-[840px]"> */}
-      <div className="grid  md:grid-cols-5 grid-cols-2 gap-6 ">
-        {data?.results.map((movie) => (
-          <SearchMovieCard data={movie} />
-        ))}
-      </div>
+      {data?.total_results !== 0 ? (
+        <div className="grid  md:grid-cols-5 grid-cols-2 gap-6 ">
+          {data?.results.map((movie) => (
+            <SearchMovieCard data={movie} />
+          ))}
+        </div>
+      ) : (
+        <div className="flex justify-center items-center h-[90vh] text-4xl">
+          Sorry we don't have "<span className="font-bold">{searchQuery}</span>"
+        </div>
+      )}
     </div>
   );
 };
