@@ -22,7 +22,7 @@ const InputBar = () => {
     console.log(data);
     setSearchQuery(data.searchMovie);
     // navigate("/search/" + data.searchMovie);
-    navigate("/search");
+    navigate(`/search?query=${encodeURIComponent(data.searchMovie)}`);
     reset();
   };
   console.log(watch("searchMovie"));
