@@ -29,7 +29,7 @@ const InputBar = () => {
   console.log(watch("searchMovie"));
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="relative flex items-center w-[50vw]">
+      <div className="relative flex items-center md:w-[50vw] w-[80vw]">
         <Input
           {...register("searchMovie")}
           type="text"
