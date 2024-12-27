@@ -1,9 +1,15 @@
-import { useSearchContext } from "@/context/SearchContext";
 import useMovieSearch from "@/hooks/useMovieSearch";
 import SearchMovieCard from "../cards/SearchMovieCard";
+import { useLocation } from "react-router-dom";
 
 const SearchPage = () => {
-  const { searchQuery } = useSearchContext();
+  const location = useLocation();
+
+  // Extract the search query from URL parameters
+  const searchParams = new URLSearchParams(location.search);
+  const searchQuery = searchParams.get("query") || "";
+
+  // Fetch movies based on the search query
   const { data } = useMovieSearch(searchQuery);
 
   return (
