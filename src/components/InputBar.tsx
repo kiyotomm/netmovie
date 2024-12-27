@@ -21,7 +21,8 @@ const InputBar = () => {
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
     setSearchQuery(data.searchMovie);
-    navigate("/search/" + data.searchMovie);
+    // navigate("/search/" + data.searchMovie);
+    navigate("/search");
     reset();
   };
   console.log(watch("searchMovie"));

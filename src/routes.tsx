@@ -14,7 +14,8 @@ const router = createBrowserRouter([
         element: <Homepage />,
       },
       { path: "movie-detail/:id", element: <MoiveDetailsPage /> },
-      { path: "search/:query", element: <SearchMoviePage /> },
+      { path: "search", element: <SearchMoviePage /> },
+      // { path: "search/:query", element: <SearchMoviePage /> },
       { path: "/:id", element: <Homepage /> }, //for modals in homepage
       { path: "movie-detail/:id/:id", element: <MoiveDetailsPage /> }, //for modals in movie detailpage
     ],
