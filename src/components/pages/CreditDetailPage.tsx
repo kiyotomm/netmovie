@@ -11,13 +11,48 @@ const CreditDetailPage = () => {
   const { id } = useParams();
   const { data } = useCreditDetails(id);
   const { data: movie } = useCreditMovie(id);
+
+  const formatDate = (dateString?: number) => {
+    if (!dateString) return "unknown";
+    const date = new Date(dateString);
+    return date.toLocaleString("en-US", {
+      month: "short",
+      day: "2-digit",
+      year: "numeric",
+    });
+  };
+
+  const formatGender = (gender?: string) => {
+    if (!gender) return "waht";
+    return gender === "1" ? "woman" : " man";
+  };
+
   return (
-    <div className="flex gap-8">
-      <div className="flex flex-col">
+    <div className="flex gap-8 mb-8">
+      <div className="flex flex-col gap-5">
         <img
           className="rounded-xl w-[350px]"
           src={`https://image.tmdb.org/t/p/w500/${data?.profile_path}`}
         />
+        <div className="flex flex-col gap-5">
+          <span className="font-bold text-2xl">Personal info</span>
+          <div className="flex flex-col">
+            <span className="font-semibold">Known for</span>
+            <span className="font-light">{data?.known_for_department}</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="font-semibold">Gender</span>
+            <span className="font-light">{formatGender(data?.gender)}</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="font-semibold">Birthday</span>
+            <span className="font-light">{formatDate(data?.birthday)}</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="font-semibold">Place of birth</span>
+            <span className="font-light">{data?.place_of_birth}</span>
+          </div>
+        </div>
       </div>
       <div className="flex flex-col gap-5">
         <span className="font-bold text-3xl">{data?.name}</span>
@@ -35,15 +70,18 @@ const CreditDetailPage = () => {
             </Button>
           </span>
         </div>
-        <ScrollArea className="">
-          <div className="flex gap-7 w-[20vw]">
+        <span className="text-xl font-semibold">Known for</span>
+        <ScrollArea className="flex flex-col">
+          <div className="flex gap-7 w-[40vw]">
             {movie?.cast.map((mov) => (
-              <div className="flex flex-col justfiy-center items-center w-[20vw]">
-                <img
-                  className="w-[180px]"
-                  src={`https://image.tmdb.org/t/p/w500/${mov.poster_path}`}
-                />
-                <span className="self-end">{mov.original_title}</span>
+              <div className="flex flex-col items-center justify-center gap-5 ">
+                <div className="w-[10vw]">
+                  <img
+                    className="w-[150px]"
+                    src={`https://image.tmdb.org/t/p/w500/${mov.poster_path}`}
+                  />
+                </div>
+                <span>{mov.original_title}</span>
               </div>
             ))}
           </div>

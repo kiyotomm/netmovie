@@ -5,10 +5,11 @@ interface FetchedCreditDetail {
   id: string;
   profile_path: string;
   gender: string;
-  birthday: string;
+  birthday: number;
   place_of_birth: string;
   biography: string;
   name: string;
+  known_for_department: string;
 }
 
 const useCreditDetails = (creditId: string | undefined) => {
