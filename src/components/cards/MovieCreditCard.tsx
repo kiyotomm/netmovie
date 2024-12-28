@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const MovieCreditCard = ({ data }: { data: Credit }) => {
   return (
     <Link
-      to={"/movie/credit/" + data.id}
+      to={"/credit/details/" + data.id}
       className="flex flex-col w-[150px] gap-2 overflow-hidden border-2 pb-3 "
     >
       {data.profile_path !== null ? (
