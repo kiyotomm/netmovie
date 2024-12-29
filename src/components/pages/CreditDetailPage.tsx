@@ -28,12 +28,13 @@ const CreditDetailPage = () => {
   };
 
   return (
-    <div className="flex gap-8 mb-8">
+    <div className="flex md:items-start items-center justify-center md:flex-row flex-col gap-8 mb-8">
       <div className="flex flex-col gap-5">
         <img
-          className="rounded-xl w-[350px]"
+          className="rounded-xl md:w-[350px] w-[250px]"
           src={`https://image.tmdb.org/t/p/w500/${data?.profile_path}`}
         />
+        <span className="block md:hidden font-bold text-3xl">{data?.name}</span>
         <div className="flex flex-col gap-5">
           <span className="font-bold text-2xl">Personal info</span>
           <div className="flex flex-col">
@@ -55,29 +56,35 @@ const CreditDetailPage = () => {
         </div>
       </div>
       <div className="flex flex-col gap-5">
-        <span className="font-bold text-3xl">{data?.name}</span>
+        <span className="hidden md:block font-bold text-3xl">{data?.name}</span>
         <div className="flex flex-col">
-          <span className=" text-2xl font-semibold">Biography</span>
-          <span className="max-w-[30vw]">
-            {showMore ? data?.biography : data?.biography.slice(0, 350)}
-            {showMore ? " " : "..."}{" "}
-            <Button
-              className="font-semibold text-blue-500"
-              onClick={() => setShowMore((prev) => !prev)}
-              variant="link"
-            >
-              {showMore ? "Show less..." : "Show More..."}
-            </Button>
-          </span>
+          {data?.biography && (
+            <span className=" text-2xl font-semibold">Biography</span>
+          )}
+          {data?.biography && (
+            <span className="md:max-w-[30vw] max-w-[85vw]">
+              {showMore ? data?.biography : data?.biography.slice(0, 350)}
+              {showMore ? " " : "..."}{" "}
+              {data!.biography.length > 349 && (
+                <Button
+                  className="font-semibold text-blue-500"
+                  onClick={() => setShowMore((prev) => !prev)}
+                  variant="link"
+                >
+                  {showMore ? "Show less..." : "Show More..."}
+                </Button>
+              )}
+            </span>
+          )}
         </div>
         <span className="text-xl font-semibold">Known for</span>
-        <ScrollArea className="flex flex-col">
-          <div className="flex gap-7 w-[40vw]">
+        <ScrollArea>
+          <div className="flex md:gap-7 gap-0 md:w-[40vw] w-[85vw]">
             {movie?.cast.map((mov) => (
               <div className="flex flex-col items-center justify-center gap-5 ">
-                <div className="w-[10vw]">
+                <div className="flex justify-center md:w-[10vw] w-[85vw]">
                   <img
-                    className="w-[150px]"
+                    className="md:w-[150px] w-[200px]"
                     src={`https://image.tmdb.org/t/p/w500/${mov.poster_path}`}
                   />
                 </div>

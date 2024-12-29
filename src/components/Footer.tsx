@@ -5,7 +5,7 @@ const Footer = () => {
     // <div className="flex justify-center items-center  border-t-2 w-screen h-[20vh]">
     //   © 2024 netmovie. All rights reserved.
     // </div>
-    <footer className="flex flex-col gap-10 justify-center items-center  border-t-2 w-screen h-[20vh] p-10">
+    <footer className="flex flex-col gap-10 justify-center items-center  border-t-2 w-screen   p-10 mt-10">
       <div>
         <p>
           Powered by{" "}
@@ -23,10 +23,13 @@ const Footer = () => {
           className="h-[20px]"
         />
       </div>
-      <div className="text-3xl">
+      <div className="md:text-3xl text-xl">
         made by
-        <Button variant="link" className="text-3xl">
-          <a href="kiyotomm.com"> kiyotomm.com</a>
+        <Button variant="link" className="md:text-3xl text-xl">
+          <a href="https://www.kiyotomm.com/" target="_blank">
+            {" "}
+            kiyotomm.com
+          </a>
         </Button>
       </div>
     </footer>
