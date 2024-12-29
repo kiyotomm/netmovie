@@ -1,6 +1,6 @@
 import useCreditDetails from "@/hooks/useCreditDetails";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button } from "../ui/button";
 import useCreditMovie from "@/hooks/useCreditMovie";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
@@ -81,7 +81,10 @@ const CreditDetailPage = () => {
         <ScrollArea>
           <div className="flex md:gap-7 gap-0 md:w-[40vw] w-[85vw]">
             {movie?.cast.map((mov) => (
-              <div className="flex flex-col items-center justify-center gap-5 ">
+              <Link
+                to={"/movie-detail/" + data?.id}
+                className="flex flex-col items-center justify-center gap-5 "
+              >
                 <div className="flex justify-center md:w-[10vw] w-[85vw]">
                   <img
                     className="md:w-[150px] w-[200px]"
@@ -89,7 +92,7 @@ const CreditDetailPage = () => {
                   />
                 </div>
                 <span>{mov.original_title}</span>
-              </div>
+              </Link>
             ))}
           </div>
           <ScrollBar orientation="horizontal" />
