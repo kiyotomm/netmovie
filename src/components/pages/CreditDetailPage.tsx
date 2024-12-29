@@ -31,25 +31,25 @@ const CreditDetailPage = () => {
     <div className="flex md:items-start items-center justify-center md:flex-row flex-col gap-8 mb-8">
       <div className="flex flex-col gap-5">
         <img
-          className="rounded-xl md:w-[350px] w-[250px]"
+          className="rounded-xl md:w-[350px] w-[320px]"
           src={`https://image.tmdb.org/t/p/w500/${data?.profile_path}`}
         />
         <span className="block md:hidden font-bold text-3xl">{data?.name}</span>
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 ">
           <span className="font-bold text-2xl">Personal info</span>
-          <div className="flex flex-col">
+          <div className="flex flex-col border-b-2">
             <span className="font-semibold">Known for</span>
             <span className="font-light">{data?.known_for_department}</span>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col border-b-2">
             <span className="font-semibold">Gender</span>
             <span className="font-light">{formatGender(data?.gender)}</span>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col border-b-2">
             <span className="font-semibold">Birthday</span>
             <span className="font-light">{formatDate(data?.birthday)}</span>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col border-b-2">
             <span className="font-semibold">Place of birth</span>
             <span className="font-light">{data?.place_of_birth}</span>
           </div>
@@ -82,7 +82,7 @@ const CreditDetailPage = () => {
           <div className="flex md:gap-7 gap-0 md:w-[40vw] w-[85vw]">
             {movie?.cast.map((mov) => (
               <Link
-                to={"/movie-detail/" + data?.id}
+                to={"/movie-detail/" + mov?.id}
                 className="flex flex-col items-center justify-center gap-5 "
               >
                 <div className="flex justify-center md:w-[10vw] w-[85vw]">
