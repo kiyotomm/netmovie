@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-center p-5 gap-3 w-screen">
+    <div className="flex items-center justify-center p-5 gap-3 w-full">
       <Title />
       <SheetComponent />
       <InputBar />

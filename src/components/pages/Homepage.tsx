@@ -5,8 +5,8 @@ import UpComingMovie from "../pagescontent/homepage/UpComingMovie";
 
 const Homepage = () => {
   return (
-    <div className="flex flex-col gap-7 justify-center items-center overflow-hidden ">
-      <div className="flex mt-4">
+    <div className="flex flex-col gap-7 justify-center items-center overflow-x-hidden ">
+      <div className="flex self-center justify-center mt-4">
         <HeroSection />
       </div>
       <div className=" md:p-10 p-7  mt-10  ">

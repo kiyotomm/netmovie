@@ -66,7 +66,7 @@ const MoiveDetailsPage = () => {
 
   return (
     <div className="flex flex-col gap-[2vw]">
-      <div className="flex md:flex-row flex-col justify-center gap-7 p-10 border-y-2 w-screen">
+      <div className="flex md:flex-row flex-col justify-center gap-7 p-10 border-y-2 w-[99vw]">
         <div className="flex justify-center">
           <img
             className="md:max-w-[300px] max-w-[290px] rounded-lg"
