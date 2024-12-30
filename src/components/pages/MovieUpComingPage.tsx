@@ -1,10 +1,10 @@
 import useMovieGenreList from "@/hooks/useMovieGenreList";
 import MovieGenreListCard from "../cards/MovieGenreListCard";
-import useMoviePopular from "@/hooks/useMoviePopular";
-import PopularMovieCard from "../cards/PopularMovieCard";
+import useMovieUpComing from "@/hooks/useMovieUpComing";
+import UpComingCard from "../cards/UpComingCard";
 
-const MoviePopularPage = () => {
-  const { data } = useMoviePopular();
+const MovieUpComingPage = () => {
+  const { data } = useMovieUpComing();
   const { data: g } = useMovieGenreList();
   return (
     <div className="flex gap-10 mt-[5vw] ">
@@ -14,10 +14,10 @@ const MoviePopularPage = () => {
         ))}
       </div>
       <div className="flex flex-col gap-10 ">
-        <div className="text-4xl font-bold">Popular</div>
+        <div className="text-4xl font-bold">Up Coming</div>
         <div className="grid grid-cols-5 gap-6">
           {data?.results.map((movie) => (
-            <div>{<PopularMovieCard data={movie} />}</div>
+            <div>{<UpComingCard data={movie} />}</div>
           ))}
         </div>
       </div>
@@ -25,4 +25,4 @@ const MoviePopularPage = () => {
   );
 };
 
-export default MoviePopularPage;
+export default MovieUpComingPage;

@@ -16,7 +16,7 @@ export function SheetComponent() {
     { link: "/movie/now-playing", list: "Now Playing" },
     { link: "/movie/popular", list: "Popular" },
     { link: "/movie/top-rated", list: "Top Rated" },
-    { link: "/movie/now-playing", list: "Up Coming" },
+    { link: "/movie/up-coming", list: "Up Coming" },
   ];
   return (
     <div>
