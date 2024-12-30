@@ -129,13 +129,18 @@ const MoiveDetailsPage = () => {
               {credit?.cast.slice(0, 8).map((cred, ind) => (
                 <MovieCreditCard key={ind} data={cred} />
               ))}
-              <Link
-                to={"/movie/credit/" + movieDetails?.id}
-                // variant="ghost"
-                className=" flex self-center items-center justify-center gap-2 font-bold w-[5vw]"
-              >
-                view more <MoveRight />
-              </Link>
+              {credit?.cast === undefined ? (
+                <div>Loading...</div>
+              ) : (
+                credit.cast.length > 8 && (
+                  <Link
+                    to={`/movie/credit/${movieDetails?.id || ""}`}
+                    className="flex self-center items-center justify-center gap-2 font-bold w-[5vw]"
+                  >
+                    view more <MoveRight />
+                  </Link>
+                )
+              )}
             </div>
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
