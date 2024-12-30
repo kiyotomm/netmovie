@@ -10,7 +10,14 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Title from "./Title";
+import { Link } from "react-router-dom";
 export function SheetComponent() {
+  const MoviesList = [
+    { link: "/movie/now-playing", list: "Now Playing" },
+    { link: "/movie/popular", list: "Popular" },
+    { link: "/movie/now-playing", list: "Top Rated" },
+    { link: "/movie/now-playing", list: "Up Coming" },
+  ];
   return (
     <div>
       <Sheet key="top">
@@ -29,10 +36,13 @@ export function SheetComponent() {
             <div className="flex flex-col gap-7">
               Movies
               <ul className="flex flex-col gap-3 font-light text-xl">
-                <li>Now Playing</li>
-                <li>Popular</li>
-                <li>Top Rated</li>
-                <li>Upcoming</li>
+                {MoviesList.map((li) => (
+                  <Link to={li.link}>
+                    <SheetClose asChild>
+                      <li>{li.list}</li>
+                    </SheetClose>
+                  </Link>
+                ))}
               </ul>
             </div>
             <div className="flex flex-col gap-7">
