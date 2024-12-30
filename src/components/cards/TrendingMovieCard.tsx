@@ -13,11 +13,7 @@ const TrendingMovieCard = ({ data }: { data: Trending }) => {
   };
 
   const formatRate = (rate: number) => {
-    if (rate === 0) {
-      return rate;
-    } else {
-      return rate.toFixed(1);
-    }
+    return rate === 0 ? rate : rate.toFixed(1);
   };
 
   return (
