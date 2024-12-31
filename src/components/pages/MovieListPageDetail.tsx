@@ -14,7 +14,7 @@ const MovieListPageDetail = () => {
       case "/movie-list/popular":
         return "Popular";
       case "/movie-list/now-playing":
-        return "Now-Playing";
+        return "Now Playing";
       case "/movie-list/top-rated":
         return "Top Rated";
       case "/movie-list/upcoming":

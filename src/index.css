@@ -11,6 +11,13 @@
   /* outline: 1px solid red; */
 }
 
+/* x scroll bar finder */
+/* document.querySelectorAll('*').forEach(el => {
+  if (el.offsetWidth > document.documentElement.clientWidth) {
+      console.log('Overflowing element:', el);
+  }
+}); */
+
 @layer base {
   :root {
     --background: 0 0% 100%;

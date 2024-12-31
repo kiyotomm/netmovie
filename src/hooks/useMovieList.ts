@@ -10,6 +10,7 @@ export interface NowPlaying {
   media_type: string;
   release_date: number;
   vote_average: number;
+  genre_ids: string;
 }
 
 interface FetchedMovieNowPlaying {
