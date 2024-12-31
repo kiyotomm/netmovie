@@ -1,6 +1,5 @@
 import apiClient from "@/services/apiClient";
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 export interface NowPlaying {
   id: number;
@@ -16,19 +15,41 @@ export interface NowPlaying {
 interface FetchedMovieNowPlaying {
   results: NowPlaying[];
   page: number;
+  total_pages: number;
 }
 
+// const useMovieList = (endPoint: string | undefined) => {
+//   const { data, isLoading, error } = useQuery({
+//     queryKey: ["nowPlaying", endPoint],
+//     queryFn: async () => {
+//       const response = await apiClient<FetchedMovieNowPlaying>(
+//         `/movie/${endPoint}`
+//       );
+//       return response.data;
+//     },
+//     initialPageParam: 1,
+//   });
+//   return { data, isLoading, error };
+// };
+
 const useMovieList = (endPoint: string | undefined) => {
-  const [page, setPage] = useState(0);
-  const { data, isLoading, error, fetchNextPage, hasNextPage } = useQuery({
-    queryKey: ["nowPlaying", endPoint, page],
-    queryFn: async () => {
-      const response = await apiClient<FetchedMovieNowPlaying>(
-        `/movie/${endPoint}?=page${page}`
-      );
-      return response.data;
-    },
-  });
+  const { data, isLoading, error, fetchNextPage, hasNextPage } =
+    useInfiniteQuery({
+      queryKey: ["now playing", endPoint],
+      queryFn: async ({ pageParam = 1 }) => {
+        const response = await apiClient<FetchedMovieNowPlaying>(
+          `/movie/${endPoint}?page=${pageParam}`
+        );
+        return response.data;
+      },
+      getNextPageParam: (lastPage) => {
+        if (lastPage.page < lastPage.total_pages) {
+          return lastPage.page + 1;
+        }
+        return undefined;
+      },
+      initialPageParam: 1,
+    });
   return { data, isLoading, error, fetchNextPage, hasNextPage };
 };
 

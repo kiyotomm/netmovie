@@ -3,6 +3,7 @@ import useMovieList from "@/hooks/useMovieList";
 import MovieGenreListCard from "../cards/MovieGenreListCard";
 import MovieListCard from "../cards/MovieListCard";
 import { useLocation, useParams } from "react-router-dom";
+import { Button } from "../ui/button";
 
 const MovieListPageDetail = () => {
   const { pathname } = useLocation();
@@ -23,7 +24,8 @@ const MovieListPageDetail = () => {
 
   let endPoint = category?.replace("-", "_");
 
-  const { data } = useMovieList(endPoint);
+  const { data, hasNextPage, fetchNextPage, isLoading } =
+    useMovieList(endPoint);
   const { data: genres } = useMovieGenreList();
 
   return (
@@ -36,10 +38,17 @@ const MovieListPageDetail = () => {
       <div className="flex flex-col gap-10 ">
         <div className="text-4xl font-bold">{cat()}</div>
         <div className="grid grid-cols-5 gap-6">
-          {data?.results.map((movie) => (
-            <div>{<MovieListCard data={movie} />}</div>
-          ))}
+          {data?.pages.map((page) =>
+            page.results.map((movie) => (
+              <div>{<MovieListCard data={movie} />}</div>
+            ))
+          )}
         </div>
+        {hasNextPage && (
+          <Button onClick={() => fetchNextPage()} disabled={isLoading}>
+            Load More
+          </Button>
+        )}
       </div>
     </div>
   );
