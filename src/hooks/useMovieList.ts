@@ -16,9 +16,9 @@ interface FetchedMovieNowPlaying {
   results: NowPlaying[];
 }
 
-const useMovieList = (endPoint: string) => {
+const useMovieList = (endPoint: string | undefined) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["nowPlaying"],
+    queryKey: ["nowPlaying", endPoint],
     queryFn: async () => {
       const response = await apiClient<FetchedMovieNowPlaying>(
         `/movie/${endPoint}`
