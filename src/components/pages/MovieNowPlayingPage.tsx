@@ -1,10 +1,10 @@
-import useMovieNowPlaying from "@/hooks/useMovieNowPlaying";
+import useMovieList from "@/hooks/useMovieList";
 import NowPlayingMovieCard from "../cards/NowPlayingMovieCard";
 import useMovieGenreList from "@/hooks/useMovieGenreList";
 import MovieGenreListCard from "../cards/MovieGenreListCard";
 
 const MovieNowPlayingPage = () => {
-  const { data } = useMovieNowPlaying();
+  const { data } = useMovieList();
   const { data: g } = useMovieGenreList();
   return (
     <div className="flex gap-10 mt-[5vw] ">

@@ -5,7 +5,7 @@ import MoiveDetailsPage from "./components/pages/MoiveDetailsPage";
 import SearchMoviePage from "./components/pages/SearchMoviePage";
 import MovieCreditPage from "./components/pages/MovieCreditPage";
 import CreditDetailPage from "./components/pages/CreditDetailPage";
-import MovieNowPlayingPage from "./components/pages/MovieNowPlayingPage";
+import MovieListPageDetail from "./components/pages/MovieListPageDetail";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
       { path: "search", element: <SearchMoviePage /> },
       { path: "movie/credit/:id", element: <MovieCreditPage /> },
       { path: "credit/details/:id", element: <CreditDetailPage /> },
-      { path: "movie/:category", element: <MovieNowPlayingPage /> },
+      { path: "movie-list/:category", element: <MovieListPageDetail /> },
       // { path: "movie/popular", element: <MoviePopularPage /> },
       // { path: "movie/top-rated", element: <MovieTopRatedPage /> },
       // { path: "movie/up-coming", element: <MovieUpComingPage /> },

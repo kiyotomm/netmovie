@@ -16,12 +16,12 @@ interface FetchedMovieNowPlaying {
   results: NowPlaying[];
 }
 
-const useMovieNowPlaying = () => {
+const useMovieList = (endPoint: string) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["nowPlaying"],
     queryFn: async () => {
       const response = await apiClient<FetchedMovieNowPlaying>(
-        "/movie/now_playing"
+        `/movie/${endPoint}`
       );
       return response.data;
     },
@@ -29,4 +29,4 @@ const useMovieNowPlaying = () => {
   return { data, isLoading, error };
 };
 
-export default useMovieNowPlaying;
+export default useMovieList;

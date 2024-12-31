@@ -2,7 +2,7 @@ import { NowPlaying } from "@/hooks/useMovieList";
 import { IoStar } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-const NowPlayingMovieCard = ({ data }: { data: NowPlaying }) => {
+const MovieListCard = ({ data }: { data: NowPlaying }) => {
   const formatDate = (dateString: number) => {
     const date = new Date(dateString);
     return date.toLocaleString("en-US", {
@@ -47,4 +47,4 @@ const NowPlayingMovieCard = ({ data }: { data: NowPlaying }) => {
   );
 };
 
-export default NowPlayingMovieCard;
+export default MovieListCard;
