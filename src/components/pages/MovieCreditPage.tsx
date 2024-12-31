@@ -18,9 +18,9 @@ const MovieCreditPage = () => {
   const { data: movie } = useMovieDetails(id);
   return (
     <div className="flex flex-col items-center justify-center gap-10">
-      <div className=" flex gap-4 md:text-4xl text-xl items-center  justify-center border-b-2 w-screen p-5">
+      <div className=" flex gap-4 md:text-4xl text-xl items-center  justify-center border-b-2 w-[99vw] p-5">
         <img
-          className="md:w-[130px] w-[50px] rounded-lg"
+          className="md:w-[250px] w-[190px] rounded-lg"
           src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
         />
         <div className="flex flex-col">
