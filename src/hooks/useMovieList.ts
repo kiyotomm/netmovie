@@ -1,5 +1,6 @@
 import apiClient from "@/services/apiClient";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 export interface NowPlaying {
   id: number;
@@ -14,19 +15,21 @@ export interface NowPlaying {
 
 interface FetchedMovieNowPlaying {
   results: NowPlaying[];
+  page: number;
 }
 
 const useMovieList = (endPoint: string | undefined) => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["nowPlaying", endPoint],
+  const [page, setPage] = useState(0);
+  const { data, isLoading, error, fetchNextPage, hasNextPage } = useQuery({
+    queryKey: ["nowPlaying", endPoint, page],
     queryFn: async () => {
       const response = await apiClient<FetchedMovieNowPlaying>(
-        `/movie/${endPoint}`
+        `/movie/${endPoint}?=page${page}`
       );
       return response.data;
     },
   });
-  return { data, isLoading, error };
+  return { data, isLoading, error, fetchNextPage, hasNextPage };
 };
 
 export default useMovieList;
