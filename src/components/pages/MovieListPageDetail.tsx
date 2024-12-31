@@ -27,7 +27,11 @@ const MovieListPageDetail = () => {
   const { data, hasNextPage, fetchNextPage, isLoading } =
     useMovieList(endPoint);
   const { data: genres } = useMovieGenreList();
-
+  const filterCategory = (cate) => {
+    data.pages.map((page) =>
+      page.results.filter((mov) => mov.id === genres?.genres.id)
+    );
+  };
   return (
     <div className="flex gap-10 mt-[5vw] ">
       <div className="flex flex-col gap-2  w-[10vw] h-[20vh] mt-[5vw]">

@@ -19,20 +19,6 @@ interface FetchedMovieNowPlaying {
   total_pages: number;
 }
 
-// const useMovieList = (endPoint: string | undefined) => {
-//   const { data, isLoading, error } = useQuery({
-//     queryKey: ["nowPlaying", endPoint],
-//     queryFn: async () => {
-//       const response = await apiClient<FetchedMovieNowPlaying>(
-//         `/movie/${endPoint}`
-//       );
-//       return response.data;
-//     },
-//     initialPageParam: 1,
-//   });
-//   return { data, isLoading, error };
-// };
-
 const useMovieList = (endPoint: string | undefined) => {
   const { data, isLoading, error, fetchNextPage, hasNextPage } =
     useInfiniteQuery({
