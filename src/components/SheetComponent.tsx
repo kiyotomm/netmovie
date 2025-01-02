@@ -19,6 +19,13 @@ export function SheetComponent() {
     { category: "upcoming", list: "Up Coming" },
   ];
 
+  const tvShowList = [
+    { category: "airing-today", list: "Airing Today" },
+    { category: "on-the-air", list: "On the air" },
+    { category: "popular", list: "Popular" },
+    { category: "top-rated", list: "Top Rated" },
+  ];
+
   return (
     <div>
       <Sheet key="top">
@@ -50,11 +57,16 @@ export function SheetComponent() {
             </div>
             <div className="flex flex-col gap-7">
               TV Shows
-              <ul className="flex flex-col gap-3 font-light text-xl">
-                <li>Now Playing</li>
-                <li>Airing Today</li>
-                <li>On TV</li>
-                <li>Top Rated</li>
+              <ul className="flex flex-col gap-3 font-light text-xl ">
+                {tvShowList.map((li) => (
+                  <Link key={li.category} to={"/tv-show-list/" + li.category}>
+                    <SheetClose asChild>
+                      <li className="hover:border-b-white hover:border-b-2 transform duration-100">
+                        {li.list}
+                      </li>
+                    </SheetClose>
+                  </Link>
+                ))}
               </ul>
             </div>
             <div className="flex flex-col gap-7">

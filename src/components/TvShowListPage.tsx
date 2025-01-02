@@ -1,9 +1,9 @@
 import useMovieGenreList from "@/hooks/useMovieGenreList";
-import useMovieList from "@/hooks/useMovieList";
-import MovieGenreListCard from "../cards/MovieGenreListCard";
-import MovieListCard from "../cards/MovieListCard";
 import { useLocation, useParams } from "react-router-dom";
-import { Button } from "../ui/button";
+import TvShowListCard from "./cards/TvShowListCard";
+import useTvShowList from "@/hooks/useTvShowList";
+import MovieGenreListCard from "./cards/MovieGenreListCard";
+import { Button } from "./ui/button";
 
 const MovieListPageDetail = () => {
   const { pathname } = useLocation();
@@ -11,27 +11,23 @@ const MovieListPageDetail = () => {
 
   const cat = () => {
     switch (pathname) {
-      case "/movie-list/popular":
+      case "/tv-show-list/airing-today":
+        return "Airing Today";
+      case "/tv-show-list/on-the-air":
+        return "On the air";
+      case "/tv-show-list/popular":
         return "Popular";
-      case "/movie-list/now-playing":
-        return "Now Playing";
-      case "/movie-list/top-rated":
+      case "/tv-show-list/top-rated":
         return "Top Rated";
-      case "/movie-list/upcoming":
-        return "Up Coming";
     }
   };
 
-  let endPoint = category?.replace("-", "_");
+  let endPoint = category?.replace(/-/g, "_");
 
   const { data, hasNextPage, fetchNextPage, isLoading } =
-    useMovieList(endPoint);
+    useTvShowList(endPoint);
   const { data: genres } = useMovieGenreList();
-  const filterCategory = (cate) => {
-    data.pages.map((page) =>
-      page.results.filter((mov) => mov.id === genres?.genres.id)
-    );
-  };
+
   return (
     <div className="flex gap-10 mt-[5vw] ">
       <div className="flex flex-col gap-2  w-[10vw] h-[20vh] mt-[5vw]">
@@ -44,7 +40,7 @@ const MovieListPageDetail = () => {
         <div className="grid grid-cols-5 gap-6">
           {data?.pages.map((page) =>
             page.results.map((movie) => (
-              <div>{<MovieListCard data={movie} />}</div>
+              <div>{<TvShowListCard data={movie} />}</div>
             ))
           )}
         </div>
