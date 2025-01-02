@@ -27,7 +27,7 @@ const useTvShowList = (endPoint: string | undefined) => {
       },
       getNextPageParam: (lastPage) => {
         if (lastPage.page < lastPage.total_pages) {
-          lastPage.page + 1;
+          return lastPage.page + 1;
         }
         return undefined;
       },
