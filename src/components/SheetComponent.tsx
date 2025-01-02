@@ -26,6 +26,8 @@ export function SheetComponent() {
     { category: "top-rated", list: "Top Rated" },
   ];
 
+  const people = [{ category: "popular", list: "Popular" }];
+
   return (
     <div>
       <Sheet key="top">
@@ -56,10 +58,10 @@ export function SheetComponent() {
               </ul>
             </div>
             <div className="flex flex-col gap-7">
-              TV Shows
+              TV Show
               <ul className="flex flex-col gap-3 font-light text-xl ">
                 {tvShowList.map((li) => (
-                  <Link key={li.category} to={"/tv-show-list/" + li.category}>
+                  <Link key={li.category} to={"/movie-list/" + li.category}>
                     <SheetClose asChild>
                       <li className="hover:border-b-white hover:border-b-2 transform duration-100">
                         {li.list}
@@ -71,8 +73,16 @@ export function SheetComponent() {
             </div>
             <div className="flex flex-col gap-7">
               People
-              <ul className="flex flex-col gap-3 font-light text-xl">
-                <li>Popular People</li>
+              <ul className="flex flex-col gap-3 font-light text-xl ">
+                {people.map((li) => (
+                  <Link key={li.category} to={"/people-list"}>
+                    <SheetClose asChild>
+                      <li className="hover:border-b-white hover:border-b-2 transform duration-100">
+                        {li.list}
+                      </li>
+                    </SheetClose>
+                  </Link>
+                ))}
               </ul>
             </div>
           </div>
