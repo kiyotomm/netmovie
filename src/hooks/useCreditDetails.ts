@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 interface FetchedCreditDetail {
   id: string;
   profile_path: string;
-  gender: string;
+  gender: number;
   birthday: number;
   place_of_birth: string;
   biography: string;
@@ -14,7 +14,7 @@ interface FetchedCreditDetail {
 
 const useCreditDetails = (creditId: string | undefined) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["credit"],
+    queryKey: ["credit", creditId],
     queryFn: async () => {
       const response = await apiClient<FetchedCreditDetail>(
         `/person/${creditId}`

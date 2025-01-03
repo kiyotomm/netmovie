@@ -5,6 +5,17 @@ import MovieListCard from "../cards/MovieListCard";
 import { useLocation, useParams } from "react-router-dom";
 import { Button } from "../ui/button";
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useState } from "react";
+
 const MovieListPage = () => {
   const { pathname } = useLocation();
   const { category } = useParams();
@@ -28,30 +39,106 @@ const MovieListPage = () => {
     useMovieList(endPoint);
   const { data: genres } = useMovieGenreList();
 
+  const [filterCategory, setFilterCategory] = useState({
+    genreId: 0,
+    genreName: "",
+  });
+  console.log(filterCategory);
+
   return (
-    <div className="flex gap-10 mt-[5vw] ">
-      <div className="flex flex-col gap-2  w-[10vw] h-[20vh] mt-[5vw]">
+    <div className="flex md:flex-row flex-col gap-10 mt-[5vw]">
+      <div className="md:flex flex-col gap-2 w-[10vw] h-[20vh] mt-[5vw] hidden">
         {genres?.genres.map((gen) => (
-          <MovieGenreListCard key={gen.id} data={gen} />
+          <div
+            onClick={() =>
+              setFilterCategory((prev) => ({
+                ...prev,
+                genreId: gen.id,
+                genreName: gen.name,
+              }))
+            }
+          >
+            <MovieGenreListCard key={gen.id} data={gen} />
+          </div>
         ))}
       </div>
+      <div className="block md:hidden">
+        <Select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select Genre" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Genres</SelectLabel>
+
+              {genres?.genres.map((gen) => (
+                <SelectItem key={gen.id} value={gen.id.toString()}>
+                  {gen.name}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </div>
       <div className="flex flex-col gap-10 ">
-        <div className="text-4xl font-bold">{cat()}</div>
-        <div className="grid grid-cols-5 gap-6">
-          {data?.pages.map((page) =>
-            page.results.map((movie) => (
-              <div>{<MovieListCard data={movie} />}</div>
-            ))
+        <div className="text-4xl font-bold">
+          {cat()} : {filterCategory.genreName}
+        </div>
+        <div className="flex flex-col gap-7">
+          <div className="grid md:grid-cols-5 grid-cols-2 gap-6">
+            {filterCategory.genreId !== 0
+              ? data?.pages.map((page) =>
+                  page.results
+                    .filter((movie) =>
+                      Array.isArray(movie.genre_ids)
+                        ? movie.genre_ids.includes(filterCategory.genreId)
+                        : movie.genre_ids === filterCategory.genreId
+                    )
+                    .map((movie) => (
+                      <div key={movie.id}>
+                        <MovieListCard data={movie} />
+                      </div>
+                    ))
+                )
+              : data?.pages.map((page) =>
+                  page.results.map((movie) => (
+                    <div key={movie.id}>
+                      <MovieListCard data={movie} />
+                    </div>
+                  ))
+                )}
+          </div>
+          {hasNextPage && (
+            <Button onClick={() => fetchNextPage()} disabled={isLoading}>
+              Load More
+            </Button>
           )}
         </div>
-        {hasNextPage && (
-          <Button onClick={() => fetchNextPage()} disabled={isLoading}>
-            Load More
-          </Button>
-        )}
       </div>
     </div>
   );
 };
 
 export default MovieListPage;
+
+{
+  /* {data?.pages.map((page) =>
+  page.results.map((movie) => (
+    <div key={movie.id}>{<MovieListCard data={movie} />}</div>
+  ))
+)} */
+}
+
+{
+  /* {data?.pages.map((page) =>
+  page.results
+    .filter((movie) =>
+      movie.genre_ids.includes(filterCategory.genreId)
+    )
+    .map((movie) => (
+      <div key={movie.id}>
+        <MovieListCard data={movie} />
+      </div>
+    ))
+)} */
+}

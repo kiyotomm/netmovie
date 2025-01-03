@@ -2,7 +2,7 @@ import { ImagesSliderComponent } from "@/components/ImageSliderComponent";
 
 const HeroSection = () => {
   return (
-    <div className="flex items-center w-full h-[40vh] overflow-hidden opacity-50">
+    <div className="flex items-center w-[99vw] h-[40vh] overflow-hidden opacity-50">
       <ImagesSliderComponent />
     </div>
     // {/* <div>

@@ -2,7 +2,7 @@ import apiClient from "@/services/apiClient";
 import { useQuery } from "@tanstack/react-query";
 
 export interface Genres {
-  id: string;
+  id: number;
   name: string;
 }
 

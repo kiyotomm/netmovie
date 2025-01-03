@@ -12,7 +12,9 @@ const Layout = () => {
       <div className="block md:hidden ">
         <MobileNavbar />
       </div>
-      <Outlet />
+      <div className="min-h-[100vh]">
+        <Outlet />
+      </div>
       <div>
         <Footer />
       </div>

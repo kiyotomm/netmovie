@@ -1,17 +1,12 @@
 import { Genres } from "@/hooks/useMovieGenreList";
 
-interface Props {
-  filter: () => void;
-}
-
-const MovieGenreListCard = ({ data }: { data: Genres }, { filter }: Props) => {
+const MovieGenreListCard = ({ data }: { data: Genres }) => {
   return (
-    <div
-      onClick={() => filter()}
-      className="flex  text-xl hover:scale-110 transition duration-300 rounded-md"
-    >
-      {data.name}
-    </div>
+    <>
+      <div className="flex  text-xl hover:scale-110 transition duration-300 rounded-md">
+        {data.name}
+      </div>
+    </>
   );
 };
 

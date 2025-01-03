@@ -2,6 +2,9 @@ import useMovieSearch from "@/hooks/useMovieSearch";
 import SearchMovieCard from "../cards/SearchMovieCard";
 import { useLocation } from "react-router-dom";
 import { Button } from "../ui/button";
+import { useState } from "react";
+import useMovieGenreList from "@/hooks/useMovieGenreList";
+import MovieGenreListCard from "../cards/MovieGenreListCard";
 
 const SearchPage = () => {
   const location = useLocation();
@@ -14,32 +17,60 @@ const SearchPage = () => {
   const { data, isLoading, fetchNextPage, hasNextPage } =
     useMovieSearch(searchQuery);
 
+  const { data: genres } = useMovieGenreList();
+
+  const [filterCategory, setFilterCategory] = useState({
+    genreId: 0,
+    genreName: "",
+  });
+
   return (
-    <div className="flex flex-col gap-10 mt-[10vh]">
-      {data?.pages[0]?.total_results !== 0 ? (
-        <span className="text-3xl">
-          Results for "<span className="font-bold">{searchQuery}</span>"
-        </span>
-      ) : null}
-      {data?.pages.map((page) =>
-        page?.total_results !== 0 ? (
-          <div className="grid  md:grid-cols-5 grid-cols-2 gap-6 ">
-            {page?.results.map((movie) => (
-              <SearchMovieCard data={movie} />
-            ))}
+    <div className="flex md:flex-row flex-col gap-10 mt-[5vw]">
+      <div className="md:flex flex-col gap-2 w-[10vw] h-[20vh] mt-[5vw] hidden">
+        {genres?.genres.map((gen) => (
+          <div
+            onClick={() =>
+              setFilterCategory((prev) => ({
+                ...prev,
+                genreId: gen.id,
+                genreName: gen.name,
+              }))
+            }
+          >
+            <MovieGenreListCard key={gen.id} data={gen} />
           </div>
-        ) : (
-          <div className="flex justify-center items-center h-[90vh] text-4xl">
-            Sorry we don't have "
-            <span className="font-bold">{searchQuery}</span>"
-          </div>
-        )
-      )}
-      {hasNextPage && (
-        <Button onClick={() => fetchNextPage()} disabled={isLoading}>
-          Load More
-        </Button>
-      )}
+        ))}
+      </div>
+      <div className="flex flex-col gap-7">
+        <div className="grid md:grid-cols-5 grid-cols-2 gap-6">
+          {filterCategory.genreId !== 0
+            ? data?.pages.map((page) =>
+                page.results
+                  .filter((movie) =>
+                    Array.isArray(movie.genre_ids)
+                      ? movie.genre_ids.includes(filterCategory.genreId)
+                      : movie.genre_ids === filterCategory.genreId
+                  )
+                  .map((movie) => (
+                    <div key={movie.id}>
+                      <SearchMovieCard data={movie} />
+                    </div>
+                  ))
+              )
+            : data?.pages.map((page) =>
+                page.results.map((movie) => (
+                  <div key={movie.id}>
+                    <SearchMovieCard data={movie} />
+                  </div>
+                ))
+              )}
+        </div>
+        {hasNextPage && (
+          <Button onClick={() => fetchNextPage()} disabled={isLoading}>
+            Load More
+          </Button>
+        )}
+      </div>
     </div>
   );
 };

@@ -22,10 +22,12 @@ const CreditDetailPage = () => {
     });
   };
 
-  const formatGender = (gender?: string) => {
+  const formatGender = (gender?: number) => {
     if (!gender) return "waht";
-    return gender === "1" ? "female" : " male";
+    return gender === 1 ? "female" : " male";
   };
+
+  console.log(data?.gender);
 
   return (
     <div className="flex md:items-start items-center justify-center md:flex-row flex-col gap-8 mb-8">
@@ -82,6 +84,7 @@ const CreditDetailPage = () => {
           <div className="flex md:gap-7 gap-0 md:w-[40vw] w-[85vw]">
             {movie?.cast.map((mov) => (
               <Link
+                key={mov.id}
                 to={"/movie-detail/" + mov?.id}
                 className="flex flex-col items-center justify-center gap-5 "
               >

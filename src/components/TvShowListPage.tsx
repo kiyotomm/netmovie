@@ -5,6 +5,16 @@ import useTvShowList from "@/hooks/useTvShowList";
 import MovieGenreListCard from "./cards/MovieGenreListCard";
 import { Button } from "./ui/button";
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 const MovieListPageDetail = () => {
   const { pathname } = useLocation();
   const { category } = useParams();
@@ -34,6 +44,21 @@ const MovieListPageDetail = () => {
         {genres?.genres.map((gen) => (
           <MovieGenreListCard key={gen.id} data={gen} />
         ))}
+      </div>
+      <div>
+        <Select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select Genre" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Genres</SelectLabel>
+              {genres?.genres.map((gen) => (
+                <SelectItem value={gen.id}>{gen.name}</SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
       <div className="flex flex-col gap-10 ">
         <div className="text-4xl font-bold">{cat()}</div>
