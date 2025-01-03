@@ -54,7 +54,7 @@ const MovieListPageDetail = () => {
             <SelectGroup>
               <SelectLabel>Genres</SelectLabel>
               {genres?.genres.map((gen) => (
-                <SelectItem value={gen.id}>{gen.name}</SelectItem>
+                <SelectItem value={gen.id.toString()}>{gen.name}</SelectItem>
               ))}
             </SelectGroup>
           </SelectContent>

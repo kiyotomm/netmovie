@@ -81,7 +81,17 @@ const MovieListPage = () => {
         </Select>
       </div>
       <div className="flex flex-col gap-10 ">
-        <div className="text-4xl font-bold">
+        <div
+          onClick={() => {
+            setFilterCategory((prev) => ({
+              ...prev,
+              genreId: 0,
+              genreName: "",
+            }));
+            console.log("clicked");
+          }}
+          className="text-4xl font-bold"
+        >
           {cat()} : {filterCategory.genreName}
         </div>
         <div className="flex flex-col gap-7">
