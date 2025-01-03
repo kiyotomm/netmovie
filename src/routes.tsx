@@ -8,6 +8,7 @@ import CreditDetailPage from "./components/pages/CreditDetailPage";
 import MovieListPage from "./components/pages/MovieListPage";
 import TvShowListPage from "./components/TvShowListPage";
 import PeopleListPage from "./components/pages/PeopleListPage";
+import TvShowDetailsPage from "./components/pages/TvShowDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
         element: <Homepage />,
       },
       { path: "movie-detail/:id", element: <MoiveDetailsPage /> },
+      { path: "tv-show-detail/:id", element: <TvShowDetailsPage /> },
       { path: "search", element: <SearchMoviePage /> },
       { path: "movie/credit/:id", element: <MovieCreditPage /> },
       { path: "credit/details/:id", element: <CreditDetailPage /> },

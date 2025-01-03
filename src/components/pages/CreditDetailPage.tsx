@@ -24,7 +24,7 @@ const CreditDetailPage = () => {
 
   const formatGender = (gender?: string) => {
     if (!gender) return "waht";
-    return gender === "1" ? "woman" : " man";
+    return gender === "1" ? "female" : " male";
   };
 
   return (

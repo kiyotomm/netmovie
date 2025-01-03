@@ -61,7 +61,7 @@ export function SheetComponent() {
               TV Show
               <ul className="flex flex-col gap-3 font-light text-xl ">
                 {tvShowList.map((li) => (
-                  <Link key={li.category} to={"/movie-list/" + li.category}>
+                  <Link key={li.category} to={"/tv-show-list/" + li.category}>
                     <SheetClose asChild>
                       <li className="hover:border-b-white hover:border-b-2 transform duration-100">
                         {li.list}
