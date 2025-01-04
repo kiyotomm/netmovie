@@ -39,8 +39,8 @@ const MovieListPageDetail = () => {
   const { data: genres } = useMovieGenreList();
 
   return (
-    <div className="flex gap-10 mt-[5vw] ">
-      <div className="flex flex-col gap-2  w-[10vw] h-[20vh] mt-[5vw]">
+    <div className="flex md:flex-row flex-col gap-10 mt-[5vw] ">
+      <div className="hidden md:flex flex-col gap-2  w-[10vw] h-[20vh] mt-[5vw]">
         {genres?.genres.map((gen) => (
           <MovieGenreListCard key={gen.id} data={gen} />
         ))}
@@ -62,7 +62,7 @@ const MovieListPageDetail = () => {
       </div>
       <div className="flex flex-col gap-10 ">
         <div className="text-4xl font-bold">{cat()}</div>
-        <div className="grid grid-cols-5 gap-6">
+        <div className="grid md:grid-cols-5 grid-cols-2 gap-6">
           {data?.pages.map((page) =>
             page.results.map((movie) => (
               <div>{<TvShowListCard data={movie} />}</div>

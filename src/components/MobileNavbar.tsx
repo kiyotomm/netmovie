@@ -6,7 +6,7 @@ import { SearchSheetComponent } from "./SearchSheetComponent";
 
 const MobileNavbar = () => {
   return (
-    <div className=" flex items-center gap-4 p-5 ">
+    <div className=" flex items-center gap-4 p-5 font-bold ">
       <MobileSheetComponent />
       <Title />
       <SearchSheetComponent />

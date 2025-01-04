@@ -5,9 +5,9 @@ import { Button } from "../ui/button";
 const PeopleListPage = () => {
   const { data, isLoading, hasNextPage, fetchNextPage } = usePeopleList();
   return (
-    <div className="flex flex-col gap-5 mt-[5vw]">
+    <div className="flex flex-col justify-center gap-5 md:mt-[5vw] mt-[20vw]">
       <span className="text-4xl font-bold">Popular people</span>
-      <div className="grid grid-cols-3 gap-10 w-[80vw] mt-10 ">
+      <div className="grid md:grid-cols-3 grid-cols-1 gap-10 w-[80vw] mt-10 ">
         {data?.pages.map((page) =>
           page.results.map((people) => <PeopleListCard data={people} />)
         )}

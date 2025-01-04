@@ -9,7 +9,6 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import Title from "./Title";
 import { Link } from "react-router-dom";
 export function SheetComponent() {
   const MoviesList = [
@@ -39,7 +38,9 @@ export function SheetComponent() {
         <SheetContent side="top" className="flex h-screen">
           <span>
             <SheetClose asChild>
-              <Title />
+              <Link className=" text-2xl md:text-4xl" to="/">
+                NetMovie
+              </Link>
             </SheetClose>
           </span>
           <div className="flex justify-around justify-self-center gap-5 w-[90vw] font-bold text-3xl mt-[10vh]">
