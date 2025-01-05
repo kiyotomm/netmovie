@@ -3,13 +3,20 @@ import CustomSwitch from "../../CustomSwitch";
 import TrendingMovieCard from "../../cards/TrendingMovieCard";
 import { useEffect, useState } from "react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import SkeletonTrendingMovie from "@/components/skeletons/SkeletonTrendingMovie";
 
 const TrendingMovie = () => {
   const [trendingPeriod, setTrendingPeriod] = useState<string>("day");
   useEffect(() => {
     console.log("Trending period updated to:", trendingPeriod);
   }, [trendingPeriod]);
-  const { data } = useMovieTrending(trendingPeriod);
+  const { data, isLoading, error } = useMovieTrending(trendingPeriod);
+
+  if (isLoading) return <SkeletonTrendingMovie />;
+
+  {
+    error && <div>an error has occured</div>;
+  }
 
   return (
     <div className="flex flex-col justify-center gap-5 md:max-w-[84vw] max-w-[85vw] overflow-hidden">

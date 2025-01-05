@@ -45,7 +45,7 @@ const MovieListPageDetail = () => {
           <MovieGenreListCard key={gen.id} data={gen} />
         ))}
       </div>
-      <div>
+      <div className="block md:hidden">
         <Select>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Select Genre" />
