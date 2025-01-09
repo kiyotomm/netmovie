@@ -10,6 +10,7 @@ import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { MoveRight } from "lucide-react";
 import RecommendedCard from "../RecommendedCard";
 import useMovieReommended from "@/hooks/useMovieRecommended";
+import MovieDetailSkeleton from "../skeletons/MovieDetailSkeleton";
 
 const MoiveDetailsPage = () => {
   let { id } = useParams();
@@ -66,6 +67,7 @@ const MoiveDetailsPage = () => {
 
   return (
     <div className="flex flex-col gap-[2vw]">
+      <MovieDetailSkeleton />
       <div className="flex md:flex-row flex-col justify-center gap-7 p-10 border-y-2 w-[99vw]">
         <div className="flex justify-center">
           <img
