@@ -15,7 +15,7 @@ import MovieDetailSkeleton from "../skeletons/MovieDetailSkeleton";
 const MoiveDetailsPage = () => {
   let { id } = useParams();
 
-  const { data: movieDetails } = useMovieDetails(id);
+  const { data: movieDetails, isLoading } = useMovieDetails(id);
   const { data: credit } = useMovieCredit(id);
   const { data: recommended } = useMovieReommended(id);
 
@@ -65,9 +65,10 @@ const MoiveDetailsPage = () => {
     return displayNames.of(locale!);
   };
 
+  if (isLoading) return <MovieDetailSkeleton />;
+
   return (
     <div className="flex flex-col gap-[2vw]">
-      <MovieDetailSkeleton />
       <div className="flex md:flex-row flex-col justify-center gap-7 p-10 border-y-2 w-[99vw]">
         <div className="flex justify-center">
           <img
@@ -125,7 +126,7 @@ const MoiveDetailsPage = () => {
       {/* cast and other aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
       <div className="flex md:flex-row flex-col justify-center gap-9">
         <div className="flex flex-col justify-center self-center  ">
-          <div className="text-4xl">Cast</div>
+          {credit?.cast && <div className="text-4xl">Cast</div>}{" "}
           <ScrollArea className="flex justify-center self-center flex-row md:w-[40vw] w-[90vw] ">
             <div className="flex md:gap-7 gap-10 mt-5 p-5">
               {credit?.cast.slice(0, 8).map((cred, ind) => (
