@@ -1,9 +1,12 @@
 import usePeopleList from "@/hooks/usePeopleList";
 import PeopleListCard from "../cards/PeopleListCard";
 import { Button } from "../ui/button";
+import SkeletonPeopleList from "../skeletons/SkeletonPeopleList";
 
 const PeopleListPage = () => {
   const { data, isLoading, hasNextPage, fetchNextPage } = usePeopleList();
+
+  if (isLoading) return <SkeletonPeopleList />;
   return (
     <div className="flex flex-col justify-center gap-5 md:mt-[5vw] mt-[20vw]">
       <span className="text-4xl font-bold">Popular people</span>
