@@ -4,12 +4,13 @@ import { Link, useParams } from "react-router-dom";
 import { Button } from "../ui/button";
 import useCreditMovie from "@/hooks/useCreditMovie";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
+import SkeletonCreditDetail from "../skeletons/SkeletonCreditDetail";
 
 const CreditDetailPage = () => {
   const [showMore, setShowMore] = useState(false);
 
   const { id } = useParams();
-  const { data } = useCreditDetails(id);
+  const { data, isLoading } = useCreditDetails(id);
   const { data: movie } = useCreditMovie(id);
 
   const formatDate = (dateString?: number) => {
@@ -27,8 +28,7 @@ const CreditDetailPage = () => {
     return gender === 1 ? "female" : " male";
   };
 
-  console.log(data?.gender);
-
+  if (isLoading) return <SkeletonCreditDetail />;
   return (
     <div className="flex md:items-start items-center justify-center md:flex-row flex-col gap-8 mb-8">
       <div className="flex flex-col gap-5">
