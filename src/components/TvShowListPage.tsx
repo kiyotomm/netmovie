@@ -14,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import SkeletonTvMovieList from "./skeletons/SkeletonTvMovieList";
 
 const MovieListPageDetail = () => {
   const { pathname } = useLocation();
@@ -36,7 +37,9 @@ const MovieListPageDetail = () => {
 
   const { data, hasNextPage, fetchNextPage, isLoading } =
     useTvShowList(endPoint);
-  const { data: genres } = useMovieGenreList();
+  const { data: genres, isLoading: genreIsloading } = useMovieGenreList();
+
+  if (isLoading || genreIsloading) return <SkeletonTvMovieList />;
 
   return (
     <div className="flex md:flex-row flex-col gap-10 mt-[5vw] ">

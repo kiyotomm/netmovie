@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
+import SkeletonTvMovieList from "../skeletons/SkeletonTvMovieList";
 
 const MovieListPage = () => {
   const { pathname } = useLocation();
@@ -37,7 +38,7 @@ const MovieListPage = () => {
 
   const { data, hasNextPage, fetchNextPage, isLoading } =
     useMovieList(endPoint);
-  const { data: genres } = useMovieGenreList();
+  const { data: genres, isLoading: genreIsloading } = useMovieGenreList();
 
   const [filterCategory, setFilterCategory] = useState({
     genreId: 0,
@@ -45,6 +46,7 @@ const MovieListPage = () => {
   });
   console.log(filterCategory);
 
+  if (isLoading || genreIsloading) return <SkeletonTvMovieList />;
   return (
     <div className="flex md:flex-row flex-col gap-10 mt-[5vw]">
       <div className="md:flex flex-col gap-2 w-[10vw] h-[20vh] mt-[5vw] hidden">
